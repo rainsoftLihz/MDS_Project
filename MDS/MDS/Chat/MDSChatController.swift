@@ -1,21 +1,19 @@
 //
-//  MDSBBBViewController.swift
+//  MDSChatController.swift
 //  MDS
 //
-//  Created by rainsoft on 2019/2/24.
+//  Created by rainsoft on 2019/2/25.
 //  Copyright © 2019年 jzt. All rights reserved.
 //
 
 import UIKit
 
-class MDSBBBController: MDSBaseController {
+class MDSChatController: UIViewController {
 
- 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        self.title = "BBB";
     }
     
 

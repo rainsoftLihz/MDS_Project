@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40565B7089854AC319E3EBAA /* libPods-MDS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41362C0B7CD49EEA340EE2EE /* libPods-MDS.a */; };
 		53D49405222379B30073FCE2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53D49404222379B30073FCE2 /* Images.xcassets */; };
+		53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D4940722239B110073FCE2 /* MDSChatController.swift */; };
 		53F67BED2222BB54004330B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67BEC2222BB54004330B5 /* AppDelegate.swift */; };
 		53F67BEF2222BB54004330B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67BEE2222BB54004330B5 /* ViewController.swift */; };
 		53F67BF22222BB54004330B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53F67BF02222BB54004330B5 /* Main.storyboard */; };
@@ -46,7 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41362C0B7CD49EEA340EE2EE /* libPods-MDS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MDS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D49404222379B30073FCE2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		53D4940722239B110073FCE2 /* MDSChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChatController.swift; sourceTree = "<group>"; };
 		53F67BE92222BB54004330B5 /* MDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F67BEC2222BB54004330B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53F67BEE2222BB54004330B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 		53F67C312222D833004330B5 /* MDSAAAController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSAAAController.swift; sourceTree = "<group>"; };
 		53F67C332222D840004330B5 /* MDSBBBController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSBBBController.swift; sourceTree = "<group>"; };
 		53F67C352222D851004330B5 /* MDSCCCController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCCCController.swift; sourceTree = "<group>"; };
+		5C33F3F46E85E394E49FE28D /* Pods-MDS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MDS/Pods-MDS.debug.xcconfig"; sourceTree = "<group>"; };
+		EA151FFEAAD8170E5300D81C /* Pods-MDS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MDS/Pods-MDS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40565B7089854AC319E3EBAA /* libPods-MDS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53D4940622239AF00073FCE2 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				53D4940722239B110073FCE2 /* MDSChatController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		53F67BE02222BB53004330B5 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +120,8 @@
 				53F67C002222BB56004330B5 /* MDSTests */,
 				53F67C0B2222BB56004330B5 /* MDSUITests */,
 				53F67BEA2222BB54004330B5 /* Products */,
+				6EE72D6D49507441D3F34524 /* Pods */,
+				B25F9B8ED3917F90C5EACCF4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +138,7 @@
 		53F67BEB2222BB54004330B5 /* MDS */ = {
 			isa = PBXGroup;
 			children = (
+				53D4940622239AF00073FCE2 /* Chat */,
 				53F67C232222C4D8004330B5 /* Business */,
 				53F67C222222C36E004330B5 /* Order */,
 				53F67C202222C2FD004330B5 /* Mine */,
@@ -201,6 +219,23 @@
 			path = Business;
 			sourceTree = "<group>";
 		};
+		6EE72D6D49507441D3F34524 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C33F3F46E85E394E49FE28D /* Pods-MDS.debug.xcconfig */,
+				EA151FFEAAD8170E5300D81C /* Pods-MDS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B25F9B8ED3917F90C5EACCF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				41362C0B7CD49EEA340EE2EE /* libPods-MDS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,6 +243,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53F67C112222BB56004330B5 /* Build configuration list for PBXNativeTarget "MDS" */;
 			buildPhases = (
+				EA96E7182577CC5FBC9860F3 /* [CP] Check Pods Manifest.lock */,
 				53F67BE52222BB54004330B5 /* Sources */,
 				53F67BE62222BB54004330B5 /* Frameworks */,
 				53F67BE72222BB54004330B5 /* Resources */,
@@ -328,6 +364,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EA96E7182577CC5FBC9860F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MDS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		53F67BE52222BB54004330B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -335,6 +392,7 @@
 			files = (
 				53F67C2D2222C5A4004330B5 /* MDSBussinessController.swift in Sources */,
 				53F67C1E2222BBEE004330B5 /* MDSTabBarController.swift in Sources */,
+				53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */,
 				53F67C342222D840004330B5 /* MDSBBBController.swift in Sources */,
 				53F67C252222C513004330B5 /* MDSBaseController.swift in Sources */,
 				53F67BEF2222BB54004330B5 /* ViewController.swift in Sources */,
@@ -518,15 +576,13 @@
 		};
 		53F67C122222BB56004330B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C33F3F46E85E394E49FE28D /* Pods-MDS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MDS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rainsoft.com.MDS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -536,15 +592,13 @@
 		};
 		53F67C132222BB56004330B5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA151FFEAAD8170E5300D81C /* Pods-MDS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MDS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rainsoft.com.MDS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -559,11 +613,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MDSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rainsoft.com.MDSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -579,11 +629,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MDSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rainsoft.com.MDSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -598,11 +644,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MDSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rainsoft.com.MDSUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -617,11 +659,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MDSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rainsoft.com.MDSUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

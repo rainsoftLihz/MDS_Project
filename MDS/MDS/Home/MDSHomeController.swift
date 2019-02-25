@@ -33,7 +33,7 @@ class MDSHomeController: MDSBaseController {
     
     @objc func btnClick(btn:UIButton) {
         let vc:MDSAAAController = MDSAAAController();
-        self.navigationController?.pushViewController(vc, animated: false);
+        self.navigationController?.pushViewController(vc, animated: true);
     }
 
     
