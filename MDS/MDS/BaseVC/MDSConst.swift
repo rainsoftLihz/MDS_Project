@@ -6,8 +6,12 @@
 //  Copyright © 2019年 jzt. All rights reserved.
 //
 
-import Foundation
 import UIKit
+
+import SnapKit
+
+import Alamofire
+
 
 //屏幕宽度
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
