@@ -12,6 +12,7 @@ import SnapKit
 
 import Alamofire
 
+import HandyJSON
 
 //屏幕宽度
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width

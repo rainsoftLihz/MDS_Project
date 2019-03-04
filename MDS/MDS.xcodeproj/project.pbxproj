@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		40565B7089854AC319E3EBAA /* libPods-MDS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41362C0B7CD49EEA340EE2EE /* libPods-MDS.a */; };
+		531FED99222D1E2400A47270 /* MDSMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531FED98222D1E2400A47270 /* MDSMovieModel.swift */; };
+		531FED9E222D1F7800A47270 /* MDSMovieApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531FED9D222D1F7800A47270 /* MDSMovieApi.swift */; };
 		53D49405222379B30073FCE2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53D49404222379B30073FCE2 /* Images.xcassets */; };
 		53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D4940722239B110073FCE2 /* MDSChatController.swift */; };
 		53F67BED2222BB54004330B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67BEC2222BB54004330B5 /* AppDelegate.swift */; };
@@ -28,6 +30,8 @@
 		53F67C322222D833004330B5 /* MDSAAAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67C312222D833004330B5 /* MDSAAAController.swift */; };
 		53F67C342222D840004330B5 /* MDSBBBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67C332222D840004330B5 /* MDSBBBController.swift */; };
 		53F67C362222D851004330B5 /* MDSCCCController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67C352222D851004330B5 /* MDSCCCController.swift */; };
+		53F9745522251A9100D12070 /* MDSNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F9745422251A9100D12070 /* MDSNetWork.swift */; };
+		53F974582225283200D12070 /* MDSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F974572225283200D12070 /* MDSAPI.swift */; };
 		53FDB3C02223D7D300848CFF /* MDSChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FDB3BF2223D7D300848CFF /* MDSChatModel.swift */; };
 		53FDB3C32223DB1100848CFF /* MDSChatBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FDB3C22223DB1100848CFF /* MDSChatBaseCell.swift */; };
 		53FDB3C52223DB3C00848CFF /* MDSChatMineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FDB3C42223DB3C00848CFF /* MDSChatMineCell.swift */; };
@@ -53,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		41362C0B7CD49EEA340EE2EE /* libPods-MDS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MDS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		531FED98222D1E2400A47270 /* MDSMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSMovieModel.swift; sourceTree = "<group>"; };
+		531FED9D222D1F7800A47270 /* MDSMovieApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSMovieApi.swift; sourceTree = "<group>"; };
 		53D49404222379B30073FCE2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		53D4940722239B110073FCE2 /* MDSChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChatController.swift; sourceTree = "<group>"; };
 		53F67BE92222BB54004330B5 /* MDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +85,8 @@
 		53F67C312222D833004330B5 /* MDSAAAController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSAAAController.swift; sourceTree = "<group>"; };
 		53F67C332222D840004330B5 /* MDSBBBController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSBBBController.swift; sourceTree = "<group>"; };
 		53F67C352222D851004330B5 /* MDSCCCController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCCCController.swift; sourceTree = "<group>"; };
+		53F9745422251A9100D12070 /* MDSNetWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSNetWork.swift; sourceTree = "<group>"; };
+		53F974572225283200D12070 /* MDSAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSAPI.swift; sourceTree = "<group>"; };
 		53FDB3BD2223BC7800848CFF /* MDS_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDS_bridge.h; sourceTree = "<group>"; };
 		53FDB3BF2223D7D300848CFF /* MDSChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChatModel.swift; sourceTree = "<group>"; };
 		53FDB3C22223DB1100848CFF /* MDSChatBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChatBaseCell.swift; sourceTree = "<group>"; };
@@ -114,6 +122,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		531FED9A222D1E2A00A47270 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				531FED98222D1E2400A47270 /* MDSMovieModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		531FED9B222D1E3100A47270 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		531FED9C222D1F6C00A47270 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				531FED9D222D1F7800A47270 /* MDSMovieApi.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
 		53D4940622239AF00073FCE2 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +180,7 @@
 		53F67BEB2222BB54004330B5 /* MDS */ = {
 			isa = PBXGroup;
 			children = (
+				53F97456222527F800D12070 /* NewWork */,
 				53D4940622239AF00073FCE2 /* Chat */,
 				53F67C232222C4D8004330B5 /* Business */,
 				53F67C222222C36E004330B5 /* Order */,
@@ -199,6 +231,9 @@
 		53F67C1F2222C2DA004330B5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				531FED9C222D1F6C00A47270 /* api */,
+				531FED9B222D1E3100A47270 /* controller */,
+				531FED9A222D1E2A00A47270 /* model */,
 				53F67C262222C552004330B5 /* MDSHomeController.swift */,
 				53F67C312222D833004330B5 /* MDSAAAController.swift */,
 				53F67C332222D840004330B5 /* MDSBBBController.swift */,
@@ -229,6 +264,15 @@
 				53F67C2C2222C5A4004330B5 /* MDSBussinessController.swift */,
 			);
 			path = Business;
+			sourceTree = "<group>";
+		};
+		53F97456222527F800D12070 /* NewWork */ = {
+			isa = PBXGroup;
+			children = (
+				53F9745422251A9100D12070 /* MDSNetWork.swift */,
+				53F974572225283200D12070 /* MDSAPI.swift */,
+			);
+			path = NewWork;
 			sourceTree = "<group>";
 		};
 		53FDB3BE2223D7BB00848CFF /* model */ = {
@@ -448,10 +492,13 @@
 				53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */,
 				53F67C342222D840004330B5 /* MDSBBBController.swift in Sources */,
 				53F67C252222C513004330B5 /* MDSBaseController.swift in Sources */,
+				53F974582225283200D12070 /* MDSAPI.swift in Sources */,
 				53F67BEF2222BB54004330B5 /* ViewController.swift in Sources */,
 				53FDB3C02223D7D300848CFF /* MDSChatModel.swift in Sources */,
 				53F67C322222D833004330B5 /* MDSAAAController.swift in Sources */,
+				531FED9E222D1F7800A47270 /* MDSMovieApi.swift in Sources */,
 				53F67C272222C552004330B5 /* MDSHomeController.swift in Sources */,
+				53F9745522251A9100D12070 /* MDSNetWork.swift in Sources */,
 				53F67C292222C579004330B5 /* MDSMinewController.swift in Sources */,
 				53FDB3C52223DB3C00848CFF /* MDSChatMineCell.swift in Sources */,
 				53F67C302222C781004330B5 /* MDSConst.swift in Sources */,
@@ -460,6 +507,7 @@
 				53F67C2B2222C58E004330B5 /* MDSOrderController.swift in Sources */,
 				53F67C362222D851004330B5 /* MDSCCCController.swift in Sources */,
 				53FDB3C32223DB1100848CFF /* MDSChatBaseCell.swift in Sources */,
+				531FED99222D1E2400A47270 /* MDSMovieModel.swift in Sources */,
 				53FDB3C72223DBB400848CFF /* MDSChatNotMineCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,7 +698,10 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MDS/MDS_bridge.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
+				USER_HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/**",
+					"\"$(SRCROOT)/MDS/BaseVC/MDSConst.swift\"/**",
+				);
 			};
 			name = Debug;
 		};
@@ -673,7 +724,10 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MDS/MDS_bridge.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
+				USER_HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/**",
+					"\"$(SRCROOT)/MDS/BaseVC/MDSConst.swift\"/**",
+				);
 			};
 			name = Release;
 		};
