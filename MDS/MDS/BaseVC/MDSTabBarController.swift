@@ -66,15 +66,5 @@ class MDSTabBarController: UITabBarController {
     
     //默认图片
     var normalImageArray = ["sy00","gwc00","ywc00","wd00"];
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

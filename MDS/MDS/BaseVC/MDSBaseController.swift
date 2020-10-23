@@ -15,7 +15,8 @@ class MDSBaseController: UIViewController {
         super.init(nibName: nil, bundle: nil);
         
         //背景色
-        self.view.backgroundColor = UIColorFromRGB(0xe5e5e5);
+        self.view.backgroundColor = UIColor.white
+            //UIColorFromRGB(0xe5e5e5);
         
         //统一返回按钮
         let backBtn:UIButton = UIButton(type: .custom);
@@ -50,5 +51,10 @@ class MDSBaseController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    deinit {
+        NSLog("%@ 销毁了。。。。。", NSStringFromClass(object_getClass(self)!));
+    }
+    
 
 }

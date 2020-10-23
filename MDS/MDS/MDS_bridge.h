@@ -8,7 +8,6 @@
 
 #ifndef MDS_bridge_h
 #define MDS_bridge_h
-
-#import <QMUIKit/QMUIKit.h>
-#import <SDWebImage/SDWebImage.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <MJRefresh/MJRefresh.h>
 #endif /* MDS_bridge_h */

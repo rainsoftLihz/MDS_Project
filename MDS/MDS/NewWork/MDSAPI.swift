@@ -10,36 +10,31 @@ import Foundation
 import Moya
 
 enum MDSAPI {
-    case login(userName:String,passwd:String)
-    case weather(location:String,output:String)
-    case defaultRequest
+    case findHomeworkList(params:[String : Any])
+    case login(params:[String : Any])
 }
 
 extension MDSAPI:TargetType{
+
     var baseURL: URL {
-        switch self {
-        case .defaultRequest:
-            return URL.init(string:"http://api.map.baidu.com")!
-        default:
-            return URL.init(string:("http://api.map.baidu.com"))!
-        }
+        return URL.init(string: MDS_BaseURL)!
     }
     
     var path: String {
         switch self {
-        case .weather:
-            return "/telematics/v3/weather";
-        default:
-            return "register";
+            case .findHomeworkList:
+                return "/homework-api/homework/process/findHomeworkList";
+            case .login:
+                return "/marking-api/login/login";
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .defaultRequest:
-            return .get
-        default:
-            return .get
+            case .findHomeworkList:
+                return .post
+            case .login:
+                return .post
         }
     }
     
@@ -48,21 +43,20 @@ extension MDSAPI:TargetType{
     }
     
     var task: Task {
-        var parmeters = [String:Any]()
         switch self {
-        case .defaultRequest:
-            return .requestPlain;
-        case .weather(let location, let output):
-            parmeters["location"] = location;
-            parmeters["output"] = output;
-            return .requestParameters(parameters: parmeters, encoding: URLEncoding.default);
-        default:
-            return .requestPlain;
+        case .findHomeworkList(params: let parmeters):
+            return .requestParameters(parameters: parmeters, encoding: JSONEncoding.default);
+        case .login(params: let parmas):
+            return .requestParameters(parameters: parmas, encoding: JSONEncoding.default);
         }
     }
     
     var headers: [String : String]? {
-        return ["Content-Type":"application/x-www-form-urlencoded"]
+        return ["Content-Type":"application/json"]
     }
     
+    var needShowHud: Bool {
+        return true
+    }
+
 }

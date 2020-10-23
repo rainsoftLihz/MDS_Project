@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON
-class MDSChatController: UIViewController,UITableViewDelegate,UITableViewDataSource,ChatCellDelegate {
+class MDSChatController: MDSBaseController,UITableViewDelegate,UITableViewDataSource,ChatCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +23,6 @@ class MDSChatController: UIViewController,UITableViewDelegate,UITableViewDataSou
     //网络请求
     func requestData() {
        
-        NetWorkRequest(target: .weather(location: "嘉兴", output: "json")) { (responseString) -> (Void) in
-            
             let contentArr = ["时间到佛山就哦IE今晚佛阿胶哦份文件佛文件俄方，索朗多吉佛山就都发生的，司机佛教为哦i就反胃","一行字吗现实","额同行，保持好奇心，代入感，倒入，无主题无课程，定主题","选框架 配方法 写脚本 平面设计 动画视频","通过今天的学习，希望大家都有个好的心情，七部入微，起锅了","hehe","怎木把动画弄的好看，请用美化大师，GO GO Go"];
             var tempArray:[MDSChatModel] = Array.init();
             for i in 0..<10{
@@ -66,13 +63,13 @@ class MDSChatController: UIViewController,UITableViewDelegate,UITableViewDataSou
             
             //var dd = j["data"];
             
-            self.dataArr = tempArray as! [MDSChatModel];
+            self.dataArr = tempArray ;
             self.tableView.reloadData();
             
-            NSLog("====%@", responseString);
+//            NSLog("====%@", responseString);
 //            let dic : NSDictionary =  self.getDictionaryFromJSONString(jsonString: responseString);
 //            NSLog("%@", dic);
-        }
+        
  
     }
     
@@ -93,7 +90,7 @@ class MDSChatController: UIViewController,UITableViewDelegate,UITableViewDataSou
         let tableView = UITableView.init(frame: CGRect(x:0, y:0, width: SCREEN_WIDTH, height:SCREEN_HEIGHT), style: UITableView.Style.plain);
         tableView.delegate = self;
         tableView.dataSource = self;
-        tableView.backgroundColor = UIColor.white;
+        tableView.backgroundColor = UIColorFromRGB(0xe5e5e5);
         tableView.separatorStyle = .none;
     
         // 注册分区cell
@@ -125,7 +122,7 @@ class MDSChatController: UIViewController,UITableViewDelegate,UITableViewDataSou
         }
         
         cell.chatModel = model;
-        
+     
         cell.clickBack = {
             NSLog("%d=====index", indexPath.row);
         };

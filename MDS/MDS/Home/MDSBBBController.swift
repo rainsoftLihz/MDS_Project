@@ -31,13 +31,13 @@ class MDSBBBController: MDSBaseController {
         img.addGestureRecognizer(tap);
         
         
-        let btn:QMUIButton = QMUIButton(type: .custom);
+        let btn:UIButton = UIButton(type: .custom);
         btn.setTitle("跳转返回", for: .normal);
         btn.setImage(UIImage(named: "wtfk"), for: .normal);
         //图片位置
-        btn.imagePosition = QMUIButtonImagePosition.top;
+        //btn.imagePosition = QMUIButtonImagePosition.top;
         //图文间距
-        btn.spacingBetweenImageAndTitle = 15;
+        //btn.spacingBetweenImageAndTitle = 15;
         
         self.view.addSubview(btn);
         

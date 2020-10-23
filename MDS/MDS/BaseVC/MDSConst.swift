@@ -12,6 +12,8 @@ import SnapKit
 
 import Alamofire
 
+import Kingfisher
+
 import HandyJSON
 
 //屏幕宽度

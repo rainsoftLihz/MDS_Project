@@ -107,8 +107,8 @@ class MDSChatBaseCell: UITableViewCell {
     
     
     //文字
-    public var contentLab:QMUILabel = {
-        let lab = QMUILabel();
+    public var contentLab:UILabel = {
+        let lab = UILabel();
         lab.font = UIFont.systemFont(ofSize: 14.0);
         lab.textColor = UIColor.red;
         lab.numberOfLines = 0;
