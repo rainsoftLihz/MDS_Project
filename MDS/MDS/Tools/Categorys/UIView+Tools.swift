@@ -13,7 +13,7 @@ let borderWidth:CGFloat = 0.8
 
 extension UIView{
     
-//MARK ----addSubView
+//MARK: ----addSubView
     func addSubViews(_ views:[UIView])  {
         for item in views {
             self.addSubview(item)

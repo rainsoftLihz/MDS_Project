@@ -19,8 +19,12 @@ extension NSObject {
         SVProgressHUD.dismiss()
     }
     
-    public class func showText(_ text:String){
-        SVProgressHUD.showInfo(withStatus: text)
+    public class func showSuccessText(_ text:String){
+        SVProgressHUD.showSuccess(withStatus: text)
+    }
+    
+    public class func showTipsText(_ text:String){
+        SVProgressHUD.showError(withStatus: text)
     }
     
     

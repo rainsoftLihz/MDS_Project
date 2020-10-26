@@ -39,13 +39,13 @@ class MDSHomeController: MDSBaseController,UICollectionViewDelegate,UICollection
                                    "pageNum":self.page,
                                    "pageSize":10];
         
-        NetWorkRequest(MDSAPI.findHomeworkList(params: params),completion: { (response) -> (Void) in
+        HomeProvider.requsetData(MDSHomeAPI.findHomeworkList(params: params),completion: { (response) -> (Void) in
+
+                self.collectionView.mj_header?.endRefreshing()
+                self.collectionView.mj_footer?.endRefreshing()
+            
                 if (response.isSucces){
                     if let tempDataArr = JSONDeserializer<MDSHomeModel>.deserializeModelArrayFrom(array: response.data as? [Any]) {
-    
-                        self.collectionView.mj_header?.endRefreshing()
-                        self.collectionView.mj_footer?.endRefreshing()
-                        
                         if self.page == 1 {
                             self.dataArr = tempDataArr as? [MDSHomeModel]
                         }else {

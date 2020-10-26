@@ -134,29 +134,30 @@ class MDSLoginVC: MDSBaseController {
         }
         
         let params:[String:String] = ["password":_passdTextF.text!,"userName":_userNameTextF.text!]
-        NetWorkRequest(.login(params: params)) { (response) -> (Void) in
+        
+        LoginProvider.requsetData(MDSLoginAPI.login(params: params)) { (response) -> (Void) in
             if response.isSucces == true {
-                 UIView.showText("登录成功")
-                 //获取cookie
-                 let cstorage:HTTPCookieStorage = HTTPCookieStorage.shared
-                 let cookies:[HTTPCookie] = cstorage.cookies ?? []
-                 for cookie:HTTPCookie in cookies {
-                    //print("name：\(cookie.name)", "value：\(cookie.value)")
-                    if cookie.name == "SESSION" {
-                        let session = "SESSION"+"="+cookie.value
-                        UserDefaults.standard.set(session, forKey: "mUserDefaultsCookie")
-                        if UserDefaults.standard.synchronize() {
-                            let myCookie:String = UserDefaults.standard.string(forKey: "mUserDefaultsCookie")!
-                            print("myCookie====\(myCookie)")
-                        }
-                    }
-                 }
-                //跳转主页
-                let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
-                appDelegate.gotoHome()
-            }else{
-                UIView.showText(response.rtnMsg!)
-           }
+                  UIView.showSuccessText("登录成功")
+                  //获取cookie
+                  let cstorage:HTTPCookieStorage = HTTPCookieStorage.shared
+                  let cookies:[HTTPCookie] = cstorage.cookies ?? []
+                  for cookie:HTTPCookie in cookies {
+                     //print("name：\(cookie.name)", "value：\(cookie.value)")
+                     if cookie.name == "SESSION" {
+                         let session = "SESSION"+"="+cookie.value
+                         UserDefaults.standard.set(session, forKey: "mUserDefaultsCookie")
+                         if UserDefaults.standard.synchronize() {
+                             let myCookie:String = UserDefaults.standard.string(forKey: "mUserDefaultsCookie")!
+                             print("myCookie====\(myCookie)")
+                         }
+                     }
+                  }
+                 //跳转主页
+                 let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+                 appDelegate.gotoHome()
+             }else{
+                 UIView.showTipsText(response.rtnMsg!)
+            }
         }
     }
     

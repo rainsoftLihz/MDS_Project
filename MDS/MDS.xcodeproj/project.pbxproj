@@ -16,8 +16,9 @@
 		530A996825401ABD009AA866 /* MDSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530A996725401ABC009AA866 /* MDSAPI.swift */; };
 		530A996A25401BD5009AA866 /* MDSConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530A996925401BD5009AA866 /* MDSConfig.swift */; };
 		531F221325411578007F5C29 /* MDSLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531F221225411578007F5C29 /* MDSLoginVC.swift */; };
-		53257CF8222E193300C5479E /* MDSHomeMVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53257CF7222E193300C5479E /* MDSHomeMVVM.swift */; };
 		53257CFC222E1D3000C5479E /* MDSHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53257CFA222E1D3000C5479E /* MDSHomeViewCell.swift */; };
+		5330A1972546B0E300B83378 /* MDSLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330A1962546B0E300B83378 /* MDSLoginAPI.swift */; };
+		5330A1992546B0F300B83378 /* MDSHomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330A1982546B0F300B83378 /* MDSHomeAPI.swift */; };
 		53D49405222379B30073FCE2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53D49404222379B30073FCE2 /* Images.xcassets */; };
 		53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D4940722239B110073FCE2 /* MDSChatController.swift */; };
 		53F67BED2222BB54004330B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67BEC2222BB54004330B5 /* AppDelegate.swift */; };
@@ -32,10 +33,7 @@
 		53F67C2B2222C58E004330B5 /* MDSOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67C2A2222C58E004330B5 /* MDSOrderController.swift */; };
 		53F67C2D2222C5A4004330B5 /* MDSBussinessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67C2C2222C5A4004330B5 /* MDSBussinessController.swift */; };
 		53F67C302222C781004330B5 /* MDSConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67C2F2222C781004330B5 /* MDSConst.swift */; };
-		53F67C322222D833004330B5 /* MDSAAAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67C312222D833004330B5 /* MDSAAAController.swift */; };
-		53F67C342222D840004330B5 /* MDSBBBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67C332222D840004330B5 /* MDSBBBController.swift */; };
-		53F67C362222D851004330B5 /* MDSCCCController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67C352222D851004330B5 /* MDSCCCController.swift */; };
-		53F9745522251A9100D12070 /* MDSNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F9745422251A9100D12070 /* MDSNetWork.swift */; };
+		53F9745522251A9100D12070 /* MDSRequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F9745422251A9100D12070 /* MDSRequestConfig.swift */; };
 		53FDB3C02223D7D300848CFF /* MDSChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FDB3BF2223D7D300848CFF /* MDSChatModel.swift */; };
 		53FDB3C32223DB1100848CFF /* MDSChatBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FDB3C22223DB1100848CFF /* MDSChatBaseCell.swift */; };
 		53FDB3C52223DB3C00848CFF /* MDSChatMineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FDB3C42223DB3C00848CFF /* MDSChatMineCell.swift */; };
@@ -69,8 +67,9 @@
 		530A996725401ABC009AA866 /* MDSAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDSAPI.swift; sourceTree = "<group>"; };
 		530A996925401BD5009AA866 /* MDSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSConfig.swift; sourceTree = "<group>"; };
 		531F221225411578007F5C29 /* MDSLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSLoginVC.swift; sourceTree = "<group>"; };
-		53257CF7222E193300C5479E /* MDSHomeMVVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSHomeMVVM.swift; sourceTree = "<group>"; };
 		53257CFA222E1D3000C5479E /* MDSHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSHomeViewCell.swift; sourceTree = "<group>"; };
+		5330A1962546B0E300B83378 /* MDSLoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSLoginAPI.swift; sourceTree = "<group>"; };
+		5330A1982546B0F300B83378 /* MDSHomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSHomeAPI.swift; sourceTree = "<group>"; };
 		53D49404222379B30073FCE2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		53D4940722239B110073FCE2 /* MDSChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChatController.swift; sourceTree = "<group>"; };
 		53F67BE92222BB54004330B5 /* MDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,10 +88,7 @@
 		53F67C2A2222C58E004330B5 /* MDSOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSOrderController.swift; sourceTree = "<group>"; };
 		53F67C2C2222C5A4004330B5 /* MDSBussinessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSBussinessController.swift; sourceTree = "<group>"; };
 		53F67C2F2222C781004330B5 /* MDSConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSConst.swift; sourceTree = "<group>"; };
-		53F67C312222D833004330B5 /* MDSAAAController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSAAAController.swift; sourceTree = "<group>"; };
-		53F67C332222D840004330B5 /* MDSBBBController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSBBBController.swift; sourceTree = "<group>"; };
-		53F67C352222D851004330B5 /* MDSCCCController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCCCController.swift; sourceTree = "<group>"; };
-		53F9745422251A9100D12070 /* MDSNetWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSNetWork.swift; sourceTree = "<group>"; };
+		53F9745422251A9100D12070 /* MDSRequestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSRequestConfig.swift; sourceTree = "<group>"; };
 		53FDB3BD2223BC7800848CFF /* MDS_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDS_bridge.h; sourceTree = "<group>"; };
 		53FDB3BF2223D7D300848CFF /* MDSChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChatModel.swift; sourceTree = "<group>"; };
 		53FDB3C22223DB1100848CFF /* MDSChatBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChatBaseCell.swift; sourceTree = "<group>"; };
@@ -149,7 +145,6 @@
 		531FED9A222D1E2A00A47270 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				53257CF7222E193300C5479E /* MDSHomeMVVM.swift */,
 				530A99652540121C009AA866 /* MDSHomeModel.swift */,
 			);
 			path = model;
@@ -249,9 +244,6 @@
 				531FED9C222D1F6C00A47270 /* api */,
 				531FED9B222D1E3100A47270 /* controller */,
 				531FED9A222D1E2A00A47270 /* model */,
-				53F67C312222D833004330B5 /* MDSAAAController.swift */,
-				53F67C332222D840004330B5 /* MDSBBBController.swift */,
-				53F67C352222D851004330B5 /* MDSCCCController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -285,8 +277,10 @@
 			isa = PBXGroup;
 			children = (
 				530A996725401ABC009AA866 /* MDSAPI.swift */,
-				53F9745422251A9100D12070 /* MDSNetWork.swift */,
+				53F9745422251A9100D12070 /* MDSRequestConfig.swift */,
 				530A9963253FD007009AA866 /* MDSResponse.swift */,
+				5330A1962546B0E300B83378 /* MDSLoginAPI.swift */,
+				5330A1982546B0F300B83378 /* MDSHomeAPI.swift */,
 			);
 			path = NewWork;
 			sourceTree = "<group>";
@@ -499,31 +493,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				53257CFC222E1D3000C5479E /* MDSHomeViewCell.swift in Sources */,
+				5330A1972546B0E300B83378 /* MDSLoginAPI.swift in Sources */,
 				530213DF25426A7200ECED48 /* UIView+Factory.swift in Sources */,
 				53F67C2D2222C5A4004330B5 /* MDSBussinessController.swift in Sources */,
 				53F67C1E2222BBEE004330B5 /* MDSTabBarController.swift in Sources */,
 				530A99662540121C009AA866 /* MDSHomeModel.swift in Sources */,
 				53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */,
-				53F67C342222D840004330B5 /* MDSBBBController.swift in Sources */,
 				53F67C252222C513004330B5 /* MDSBaseController.swift in Sources */,
 				530A996A25401BD5009AA866 /* MDSConfig.swift in Sources */,
+				5330A1992546B0F300B83378 /* MDSHomeAPI.swift in Sources */,
 				53FDB3C02223D7D300848CFF /* MDSChatModel.swift in Sources */,
-				53F67C322222D833004330B5 /* MDSAAAController.swift in Sources */,
 				530213DD2542658200ECED48 /* UIView+Tools.swift in Sources */,
 				53F67C272222C552004330B5 /* MDSHomeController.swift in Sources */,
-				53F9745522251A9100D12070 /* MDSNetWork.swift in Sources */,
+				53F9745522251A9100D12070 /* MDSRequestConfig.swift in Sources */,
 				53F67C292222C579004330B5 /* MDSMinewController.swift in Sources */,
 				530A996825401ABD009AA866 /* MDSAPI.swift in Sources */,
 				531F221325411578007F5C29 /* MDSLoginVC.swift in Sources */,
 				53FDB3C52223DB3C00848CFF /* MDSChatMineCell.swift in Sources */,
-				53257CF8222E193300C5479E /* MDSHomeMVVM.swift in Sources */,
 				53F67C302222C781004330B5 /* MDSConst.swift in Sources */,
 				530A9964253FD007009AA866 /* MDSResponse.swift in Sources */,
 				53F67C1C2222BBB4004330B5 /* MDSNavController.swift in Sources */,
 				530213E12542843100ECED48 /* ScrollView+MJ.swift in Sources */,
 				53F67BED2222BB54004330B5 /* AppDelegate.swift in Sources */,
 				53F67C2B2222C58E004330B5 /* MDSOrderController.swift in Sources */,
-				53F67C362222D851004330B5 /* MDSCCCController.swift in Sources */,
 				53FDB3C32223DB1100848CFF /* MDSChatBaseCell.swift in Sources */,
 				53FDB3C72223DBB400848CFF /* MDSChatNotMineCell.swift in Sources */,
 			);
