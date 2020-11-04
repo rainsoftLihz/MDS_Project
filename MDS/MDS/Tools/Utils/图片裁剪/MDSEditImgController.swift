@@ -23,18 +23,20 @@ class MDSEditImgController: MDSBaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.myNavView.backgroundColor = UIColorFromRGB(0x333333)
+        self.view.backgroundColor = .black
+        self.myNavView.backgroundColor = .black
         self.addTitle(title: "编辑图片")
         self.titleLab.textColor = .white
         self.view.addSubview(self.edtView)
         self.edtView.imgView.image = self._img
         self.addBottomBtn()
+        self.view.bringSubviewToFront(self.myNavView)
     }
     
     func addBottomBtn()  {
         let bottomV:UIView = UIView.createView(backgroundColor: .white)
         self.view.addSubview(bottomV)
-        bottomV.myFrame(0, SCREEN_HEIGHT-100, SCREEN_WIDTH, 100)
+        bottomV.myFrame(0, SCREEN_HEIGHT-bottomH, SCREEN_WIDTH, bottomH)
         let titleArr:[String] = ["还原","旋转","完成"]
         let btnW:CGFloat = SCREEN_WIDTH/CGFloat(titleArr.count)
         for index in 0..<titleArr.count{

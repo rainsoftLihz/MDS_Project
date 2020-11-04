@@ -150,7 +150,9 @@ class MDSPickImgController: UIViewController, UICollectionViewDelegate, UICollec
     //MARK: ---完成
     @objc func completeButtonClick(){
         self.completeHandler?(self.getAsserToImgArr())
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async{
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     //MARK: ---转换选中的图片 PHAsset--->img

@@ -24,12 +24,9 @@
 		5330A1972546B0E300B83378 /* MDSLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330A1962546B0E300B83378 /* MDSLoginAPI.swift */; };
 		5330A1992546B0F300B83378 /* MDSHomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330A1982546B0F300B83378 /* MDSHomeAPI.swift */; };
 		5337827E254BB694003E1E0E /* MDSCutAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5337827D254BB694003E1E0E /* MDSCutAreaView.swift */; };
-		536ED8662548F8DD00602BAB /* MDSChoseImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536ED8652548F8DD00602BAB /* MDSChoseImageTool.swift */; };
 		536ED868254904EC00602BAB /* MDSEditImgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536ED867254904EC00602BAB /* MDSEditImgView.swift */; };
 		536ED86A25490E3C00602BAB /* MDSEditImgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536ED86925490E3C00602BAB /* MDSEditImgController.swift */; };
 		537FA7D2254A9B3200538D30 /* MDSCutGridLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537FA7D1254A9B3200538D30 /* MDSCutGridLayer.swift */; };
-		537FA7D4254AA07500538D30 /* MDSCutCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537FA7D3254AA07500538D30 /* MDSCutCircle.swift */; };
-		537FA7D6254AA24200538D30 /* MDSImgEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537FA7D5254AA24200538D30 /* MDSImgEditView.swift */; };
 		53D49405222379B30073FCE2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53D49404222379B30073FCE2 /* Images.xcassets */; };
 		53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D4940722239B110073FCE2 /* MDSChatController.swift */; };
 		53D4F70F25513694004117D3 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D4F70E25513694004117D3 /* UIViewController+Ext.swift */; };
@@ -89,12 +86,9 @@
 		5330A1962546B0E300B83378 /* MDSLoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSLoginAPI.swift; sourceTree = "<group>"; };
 		5330A1982546B0F300B83378 /* MDSHomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSHomeAPI.swift; sourceTree = "<group>"; };
 		5337827D254BB694003E1E0E /* MDSCutAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCutAreaView.swift; sourceTree = "<group>"; };
-		536ED8652548F8DD00602BAB /* MDSChoseImageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChoseImageTool.swift; sourceTree = "<group>"; };
 		536ED867254904EC00602BAB /* MDSEditImgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSEditImgView.swift; sourceTree = "<group>"; };
 		536ED86925490E3C00602BAB /* MDSEditImgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSEditImgController.swift; sourceTree = "<group>"; };
 		537FA7D1254A9B3200538D30 /* MDSCutGridLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCutGridLayer.swift; sourceTree = "<group>"; };
-		537FA7D3254AA07500538D30 /* MDSCutCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCutCircle.swift; sourceTree = "<group>"; };
-		537FA7D5254AA24200538D30 /* MDSImgEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSImgEditView.swift; sourceTree = "<group>"; };
 		53D49404222379B30073FCE2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		53D4940722239B110073FCE2 /* MDSChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChatController.swift; sourceTree = "<group>"; };
 		53D4F70E25513694004117D3 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
@@ -172,6 +166,14 @@
 			path = Categorys;
 			sourceTree = "<group>";
 		};
+		531B1B312552AB2400DDC15D /* 按钮拖拽 */ = {
+			isa = PBXGroup;
+			children = (
+				5329F36F254FA3E7002C380B /* MDSDrageView.swift */,
+			);
+			path = "按钮拖拽";
+			sourceTree = "<group>";
+		};
 		531FED9A222D1E2A00A47270 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,13 +219,10 @@
 		536ED8642548F8B900602BAB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				531B1B312552AB2400DDC15D /* 按钮拖拽 */,
 				53D7ECEE2550E030000FF495 /* 选择器 */,
 				5329F371254FF845002C380B /* 图片选择 */,
 				537FA7C2254A949C00538D30 /* 图片裁剪 */,
-				536ED8652548F8DD00602BAB /* MDSChoseImageTool.swift */,
-				536ED867254904EC00602BAB /* MDSEditImgView.swift */,
-				536ED86925490E3C00602BAB /* MDSEditImgController.swift */,
-				5329F36F254FA3E7002C380B /* MDSDrageView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -231,9 +230,9 @@
 		537FA7C2254A949C00538D30 /* 图片裁剪 */ = {
 			isa = PBXGroup;
 			children = (
+				536ED86925490E3C00602BAB /* MDSEditImgController.swift */,
+				536ED867254904EC00602BAB /* MDSEditImgView.swift */,
 				537FA7D1254A9B3200538D30 /* MDSCutGridLayer.swift */,
-				537FA7D3254AA07500538D30 /* MDSCutCircle.swift */,
-				537FA7D5254AA24200538D30 /* MDSImgEditView.swift */,
 				5337827D254BB694003E1E0E /* MDSCutAreaView.swift */,
 			);
 			path = "图片裁剪";
@@ -586,8 +585,6 @@
 				53D7ECF02550E07B000FF495 /* MDSSlectTabController.swift in Sources */,
 				53F9745522251A9100D12070 /* MDSRequestConfig.swift in Sources */,
 				53F67C292222C579004330B5 /* MDSMinewController.swift in Sources */,
-				537FA7D4254AA07500538D30 /* MDSCutCircle.swift in Sources */,
-				537FA7D6254AA24200538D30 /* MDSImgEditView.swift in Sources */,
 				530A996825401ABD009AA866 /* MDSAPI.swift in Sources */,
 				5337827E254BB694003E1E0E /* MDSCutAreaView.swift in Sources */,
 				537FA7D2254A9B3200538D30 /* MDSCutGridLayer.swift in Sources */,
@@ -605,7 +602,6 @@
 				53FDB3C32223DB1100848CFF /* MDSChatBaseCell.swift in Sources */,
 				536ED868254904EC00602BAB /* MDSEditImgView.swift in Sources */,
 				53FDB3C72223DBB400848CFF /* MDSChatNotMineCell.swift in Sources */,
-				536ED8662548F8DD00602BAB /* MDSChoseImageTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

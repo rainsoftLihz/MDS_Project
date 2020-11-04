@@ -9,32 +9,27 @@
 import UIKit
 
 class MDSEditImgView: UIView,MDSCutAreaViewDelegate{
-
+    
     //设置图片
     public var imgView: UIImageView = UIImageView()
     //截取区域
-    public var targetView : MDSCutAreaView = MDSCutAreaView.init(frame: CGRect.init(x: 10, y: 100, width: 100, height: 100))
-    //透明背景
-    public var cropView: MDSCutAreaView = MDSCutAreaView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_WIDTH))
+    let clipRect:CGRect = CGRect.init(x: SCREEN_WIDTH/2-175, y: 100, width: 350, height: 350)
+    
+    public var targetView : MDSCutAreaView = MDSCutAreaView.init()
+    //layer
+    var _gridLayer:MDSCutGridLayer = MDSCutGridLayer.init()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //self.addSubview(self.cropView)
         self.addSubview(targetView)
         self.targetView.addSubview(imgView)
-        //cropView.addSubview(imgView)
-        imgView.isUserInteractionEnabled = true
-        targetView.myFrame(SCREEN_WIDTH/2-175, 100, 350, 350)
-        imgView.myFrame(0,0, SCREEN_WIDTH, SCREEN_HEIGHT)
-        //cropView.center = targetView.center
-        imgView.center = targetView.center
-        self.cropView.delegate = self
+        self.imgView.isUserInteractionEnabled = true
+        self.targetView.frame = clipRect
+        self.imgView.contentMode = .scaleAspectFit
+        self.imgView.frame = self.targetView.bounds
         self.targetView.delegate = self
-        
         self.targetView.backgroundColor = .clear
-        self.targetView.layer.borderWidth = 1
-        self.targetView.layer.borderColor = UIColor.white.cgColor
-        
+        self.addLayer()
         //缩放手势
         let pinchGesture:UIPinchGestureRecognizer = UIPinchGestureRecognizer.init(target: self, action: #selector(pinchView(pinchGestureRecognizer:)))
         self.imgView.addGestureRecognizer(pinchGesture)
@@ -48,10 +43,17 @@ class MDSEditImgView: UIView,MDSCutAreaViewDelegate{
         return self.imgView
     }
     
+    
+    func addLayer() {
+        _gridLayer.frame = self.bounds
+        _gridLayer.bgColor = UIColor.black.withAlphaComponent(0.5)
+        _gridLayer.clippingRect = clipRect
+        self.layer.addSublayer(_gridLayer)
+    }
+    
     override func draw(_ rect: CGRect) {
-        self.imgView.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
-        self.cropView.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
-        self.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
+        self.backgroundColor = .black
+        self._gridLayer.setNeedsDisplay()        
     }
 
     @objc func dragView(dragGesture:UIPanGestureRecognizer){
@@ -62,7 +64,9 @@ class MDSEditImgView: UIView,MDSCutAreaViewDelegate{
         var viewRect = rect.origin
         viewRect.x += Point.x;
         viewRect.y += Point.y;
+        
         rect.origin = viewRect
+        
         imgView.frame = rect
         //初始化translation
         dragGesture.setTranslation(CGPoint.init(x: 0, y: 0), in: view)
@@ -81,24 +85,19 @@ class MDSEditImgView: UIView,MDSCutAreaViewDelegate{
     
     //MARK: ---旋转
     func inverted(){
-        
         UIView.animate(withDuration: 0.2) {
             self.imgView.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2).concatenating(self.imgView.transform)
-            //self.imgView.center = self.targetView.center
         }
     }
     
     //MARK: --- 还原图片
     func setDefault(){
         self.imgView.transform = CGAffineTransform.identity
-//        let rect = self.cropView.frame
-//        self.cropView.myFrame(0, 0, rect.width, rect.height)
+        self.imgView.frame = self.targetView.bounds
     }
     
     //MARK: ---编辑过后生成图片
     func drawPictures() -> UIImage {
-
-        _ = self.convert(self.targetView.frame, to: self.cropView)
         return UIView.getImageFromView(view: self.targetView)
     }
 

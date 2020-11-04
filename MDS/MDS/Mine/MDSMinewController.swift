@@ -46,8 +46,15 @@ class MDSMinewController: MDSBaseController,MDSChoseImgsToolDelegate {
     }
     
     func didSelectPhohtosBack(imgArr: [UIImage]) {
-        let vc:MDSBrowsePhotoController = MDSBrowsePhotoController.init()
-        vc.imgArr = imgArr
+//        let vc:MDSBrowsePhotoController = MDSBrowsePhotoController.init()
+//        vc.imgArr = imgArr
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let vc:MDSEditImgController = MDSEditImgController.init()
+        vc._img = imgArr.first
+        vc.successEditBlock = {[weak self] (img) in
+            self!.imgV.image = img
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

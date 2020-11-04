@@ -20,6 +20,7 @@ class MDSCutAreaView: UIView {
         self.isUserInteractionEnabled = true
     }
     
+    //手势事件都转移到其它视图
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         return self.delegate?.actionView();
     }

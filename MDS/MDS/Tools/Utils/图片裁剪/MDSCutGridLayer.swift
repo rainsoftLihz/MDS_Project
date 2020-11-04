@@ -31,7 +31,7 @@ class MDSCutGridLayer: CALayer {
         
         rct = self.clippingRect
         context.beginPath()
-        /*
+    
         //画竖线
         let dw:CGFloat = (clippingRect.size.width)/3
         for i:Int in 0..<4 {
@@ -45,8 +45,6 @@ class MDSCutGridLayer: CALayer {
             context.move(to: CGPoint.init(x: rct.origin.x, y: rct.origin.y+CGFloat(i)*dh))
             context.addLine(to: CGPoint.init(x: rct.origin.x+rct.size.width, y: rct.origin.y+CGFloat(i)*dh))
         }
-         */
-        
         context.strokePath()
     }
     

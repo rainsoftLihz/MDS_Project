@@ -80,7 +80,9 @@ class MDSChoseImgsTool: NSObject, UIImagePickerControllerDelegate & UINavigation
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image : UIImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         self.superVC?.didTakePhohtoBack(img: image)
-        picker.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async{
+            picker.dismiss(animated: true, completion: nil)
+        }
     }
     
     //MARK: ---- 相册获取照片
