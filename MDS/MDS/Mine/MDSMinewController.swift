@@ -8,23 +8,50 @@
 
 import UIKit
 
-class MDSMinewController: MDSBaseController {
-
+class MDSMinewController: MDSBaseController,MDSChoseImgsToolDelegate {
+    
+    var choseBtn:UIButton = UIView.createBtn(title: "选择图片", titleColor: .black, fontSize: 14)
+    
+    var imgV:UIImageView = {
+        let w:CGFloat = 350
+        let tempV:UIImageView = UIImageView.init(frame: CGRect.init(x: SCREEN_WIDTH/2-w/2, y: 150, width: w, height: w))
+        tempV.image = UIImage.init(named: "xkdj")
+        tempV.backgroundColor = .yellow
+        tempV.contentMode = .scaleAspectFill
+        return tempV
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.addSubViews([choseBtn,imgV])
+        choseBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(100)
+            make.centerX.equalToSuperview()
+        }
+        choseBtn.addTarget(self, action: #selector(choseImg), for: .touchUpInside)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func didTakePhohtoBack(img: UIImage) {
+//        let vc:MDSBrowsePhotoController = MDSBrowsePhotoController.init()
+//        vc.imgArr = [img]
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let vc:MDSEditImgController = MDSEditImgController.init()
+        vc._img = img
+        vc.successEditBlock = {[weak self] (img) in
+            self!.imgV.image = img
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    */
-
+    
+    func didSelectPhohtosBack(imgArr: [UIImage]) {
+        let vc:MDSBrowsePhotoController = MDSBrowsePhotoController.init()
+        vc.imgArr = imgArr
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func choseImg(){
+        MDSChoseImgsTool.manger.choseImg(superVC: self)
+    }
 }

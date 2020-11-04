@@ -19,4 +19,5 @@ target 'MDS' do
     pod 'MJRefresh'
     #加载图片
     pod 'Kingfisher'
+
 end

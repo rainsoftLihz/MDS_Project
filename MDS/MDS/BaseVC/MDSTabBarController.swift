@@ -12,18 +12,12 @@ class MDSTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         self.addAllChildVc();
-        
         self.tabBar.barTintColor = UIColor.white;
-        //UITabBar.appearance().backgroundColor = UIColor.white;
     }
     
     //添加子控制器
     func addAllChildVc()  {
-        
         for index in 0..<childVCArr.count{
             self.addChildViewController(childVC: childVCArr[index], title: titleArr[index], normalImg: normalImageArray[index], selectedImg: selectedImageArray[index]);
         }
@@ -39,13 +33,13 @@ class MDSTabBarController: UITabBarController {
         //childVC.tabBarItem.title = title;
         
         //只设置页面导航栏的title
-        childVC.navigationItem.title = title;
+        //childVC.navigationItem.title = title;
         childVC.tabBarItem.image = UIImage(named: normalImg);
         childVC.tabBarItem.selectedImage = UIImage(named: selectedImg)?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal);
         
         //主界面隐藏返回按钮
-        childVC.navigationItem.hidesBackButton = true;
-        childVC.navigationItem.leftBarButtonItem = nil;
+        //childVC.navigationItem.hidesBackButton = true;
+        //childVC.navigationItem.leftBarButtonItem = nil;
         
         
         //没有文字的时候 图片剧中

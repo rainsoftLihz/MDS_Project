@@ -17,10 +17,24 @@
 		530A996A25401BD5009AA866 /* MDSConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530A996925401BD5009AA866 /* MDSConfig.swift */; };
 		531F221325411578007F5C29 /* MDSLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531F221225411578007F5C29 /* MDSLoginVC.swift */; };
 		53257CFC222E1D3000C5479E /* MDSHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53257CFA222E1D3000C5479E /* MDSHomeViewCell.swift */; };
+		5329F370254FA3E7002C380B /* MDSDrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329F36F254FA3E7002C380B /* MDSDrageView.swift */; };
+		5329F373254FF87D002C380B /* MDSPickImgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329F372254FF87D002C380B /* MDSPickImgController.swift */; };
+		5329F375254FFB0F002C380B /* MDSImgCollectionwCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329F374254FFB0F002C380B /* MDSImgCollectionwCell.swift */; };
+		5329F377255009F1002C380B /* MDSChoseImgsTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329F376255009F1002C380B /* MDSChoseImgsTool.swift */; };
 		5330A1972546B0E300B83378 /* MDSLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330A1962546B0E300B83378 /* MDSLoginAPI.swift */; };
 		5330A1992546B0F300B83378 /* MDSHomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330A1982546B0F300B83378 /* MDSHomeAPI.swift */; };
+		5337827E254BB694003E1E0E /* MDSCutAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5337827D254BB694003E1E0E /* MDSCutAreaView.swift */; };
+		536ED8662548F8DD00602BAB /* MDSChoseImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536ED8652548F8DD00602BAB /* MDSChoseImageTool.swift */; };
+		536ED868254904EC00602BAB /* MDSEditImgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536ED867254904EC00602BAB /* MDSEditImgView.swift */; };
+		536ED86A25490E3C00602BAB /* MDSEditImgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536ED86925490E3C00602BAB /* MDSEditImgController.swift */; };
+		537FA7D2254A9B3200538D30 /* MDSCutGridLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537FA7D1254A9B3200538D30 /* MDSCutGridLayer.swift */; };
+		537FA7D4254AA07500538D30 /* MDSCutCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537FA7D3254AA07500538D30 /* MDSCutCircle.swift */; };
+		537FA7D6254AA24200538D30 /* MDSImgEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537FA7D5254AA24200538D30 /* MDSImgEditView.swift */; };
 		53D49405222379B30073FCE2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53D49404222379B30073FCE2 /* Images.xcassets */; };
 		53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D4940722239B110073FCE2 /* MDSChatController.swift */; };
+		53D4F70F25513694004117D3 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D4F70E25513694004117D3 /* UIViewController+Ext.swift */; };
+		53D7ECF02550E07B000FF495 /* MDSSlectTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D7ECEF2550E07B000FF495 /* MDSSlectTabController.swift */; };
+		53D9F94C2552318700F3B979 /* MDSBrowsePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F94B2552318700F3B979 /* MDSBrowsePhotoController.swift */; };
 		53F67BED2222BB54004330B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67BEC2222BB54004330B5 /* AppDelegate.swift */; };
 		53F67BF22222BB54004330B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53F67BF02222BB54004330B5 /* Main.storyboard */; };
 		53F67BF42222BB56004330B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53F67BF32222BB56004330B5 /* Assets.xcassets */; };
@@ -68,10 +82,24 @@
 		530A996925401BD5009AA866 /* MDSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSConfig.swift; sourceTree = "<group>"; };
 		531F221225411578007F5C29 /* MDSLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSLoginVC.swift; sourceTree = "<group>"; };
 		53257CFA222E1D3000C5479E /* MDSHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSHomeViewCell.swift; sourceTree = "<group>"; };
+		5329F36F254FA3E7002C380B /* MDSDrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSDrageView.swift; sourceTree = "<group>"; };
+		5329F372254FF87D002C380B /* MDSPickImgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSPickImgController.swift; sourceTree = "<group>"; };
+		5329F374254FFB0F002C380B /* MDSImgCollectionwCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSImgCollectionwCell.swift; sourceTree = "<group>"; };
+		5329F376255009F1002C380B /* MDSChoseImgsTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChoseImgsTool.swift; sourceTree = "<group>"; };
 		5330A1962546B0E300B83378 /* MDSLoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSLoginAPI.swift; sourceTree = "<group>"; };
 		5330A1982546B0F300B83378 /* MDSHomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSHomeAPI.swift; sourceTree = "<group>"; };
+		5337827D254BB694003E1E0E /* MDSCutAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCutAreaView.swift; sourceTree = "<group>"; };
+		536ED8652548F8DD00602BAB /* MDSChoseImageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChoseImageTool.swift; sourceTree = "<group>"; };
+		536ED867254904EC00602BAB /* MDSEditImgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSEditImgView.swift; sourceTree = "<group>"; };
+		536ED86925490E3C00602BAB /* MDSEditImgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSEditImgController.swift; sourceTree = "<group>"; };
+		537FA7D1254A9B3200538D30 /* MDSCutGridLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCutGridLayer.swift; sourceTree = "<group>"; };
+		537FA7D3254AA07500538D30 /* MDSCutCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCutCircle.swift; sourceTree = "<group>"; };
+		537FA7D5254AA24200538D30 /* MDSImgEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSImgEditView.swift; sourceTree = "<group>"; };
 		53D49404222379B30073FCE2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		53D4940722239B110073FCE2 /* MDSChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChatController.swift; sourceTree = "<group>"; };
+		53D4F70E25513694004117D3 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		53D7ECEF2550E07B000FF495 /* MDSSlectTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSSlectTabController.swift; sourceTree = "<group>"; };
+		53D9F94B2552318700F3B979 /* MDSBrowsePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSBrowsePhotoController.swift; sourceTree = "<group>"; };
 		53F67BE92222BB54004330B5 /* MDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F67BEC2222BB54004330B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53F67BF12222BB54004330B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,6 +155,7 @@
 		530213D8254264A500ECED48 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				536ED8642548F8B900602BAB /* Utils */,
 				530213D9254264B400ECED48 /* Categorys */,
 			);
 			path = Tools;
@@ -135,6 +164,7 @@
 		530213D9254264B400ECED48 /* Categorys */ = {
 			isa = PBXGroup;
 			children = (
+				53D4F70E25513694004117D3 /* UIViewController+Ext.swift */,
 				530213DC2542658200ECED48 /* UIView+Tools.swift */,
 				530213DE25426A7200ECED48 /* UIView+Factory.swift */,
 				530213E02542843100ECED48 /* ScrollView+MJ.swift */,
@@ -173,6 +203,42 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		5329F371254FF845002C380B /* 图片选择 */ = {
+			isa = PBXGroup;
+			children = (
+				5329F372254FF87D002C380B /* MDSPickImgController.swift */,
+				5329F374254FFB0F002C380B /* MDSImgCollectionwCell.swift */,
+				5329F376255009F1002C380B /* MDSChoseImgsTool.swift */,
+				53D9F94B2552318700F3B979 /* MDSBrowsePhotoController.swift */,
+			);
+			path = "图片选择";
+			sourceTree = "<group>";
+		};
+		536ED8642548F8B900602BAB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				53D7ECEE2550E030000FF495 /* 选择器 */,
+				5329F371254FF845002C380B /* 图片选择 */,
+				537FA7C2254A949C00538D30 /* 图片裁剪 */,
+				536ED8652548F8DD00602BAB /* MDSChoseImageTool.swift */,
+				536ED867254904EC00602BAB /* MDSEditImgView.swift */,
+				536ED86925490E3C00602BAB /* MDSEditImgController.swift */,
+				5329F36F254FA3E7002C380B /* MDSDrageView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		537FA7C2254A949C00538D30 /* 图片裁剪 */ = {
+			isa = PBXGroup;
+			children = (
+				537FA7D1254A9B3200538D30 /* MDSCutGridLayer.swift */,
+				537FA7D3254AA07500538D30 /* MDSCutCircle.swift */,
+				537FA7D5254AA24200538D30 /* MDSImgEditView.swift */,
+				5337827D254BB694003E1E0E /* MDSCutAreaView.swift */,
+			);
+			path = "图片裁剪";
+			sourceTree = "<group>";
+		};
 		53D4940622239AF00073FCE2 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +247,14 @@
 				53D4940722239B110073FCE2 /* MDSChatController.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		53D7ECEE2550E030000FF495 /* 选择器 */ = {
+			isa = PBXGroup;
+			children = (
+				53D7ECEF2550E07B000FF495 /* MDSSlectTabController.swift */,
+			);
+			path = "选择器";
 			sourceTree = "<group>";
 		};
 		53F67BE02222BB53004330B5 = {
@@ -494,30 +568,44 @@
 			files = (
 				53257CFC222E1D3000C5479E /* MDSHomeViewCell.swift in Sources */,
 				5330A1972546B0E300B83378 /* MDSLoginAPI.swift in Sources */,
+				5329F373254FF87D002C380B /* MDSPickImgController.swift in Sources */,
 				530213DF25426A7200ECED48 /* UIView+Factory.swift in Sources */,
 				53F67C2D2222C5A4004330B5 /* MDSBussinessController.swift in Sources */,
+				53D9F94C2552318700F3B979 /* MDSBrowsePhotoController.swift in Sources */,
 				53F67C1E2222BBEE004330B5 /* MDSTabBarController.swift in Sources */,
+				5329F375254FFB0F002C380B /* MDSImgCollectionwCell.swift in Sources */,
 				530A99662540121C009AA866 /* MDSHomeModel.swift in Sources */,
 				53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */,
 				53F67C252222C513004330B5 /* MDSBaseController.swift in Sources */,
 				530A996A25401BD5009AA866 /* MDSConfig.swift in Sources */,
+				536ED86A25490E3C00602BAB /* MDSEditImgController.swift in Sources */,
 				5330A1992546B0F300B83378 /* MDSHomeAPI.swift in Sources */,
 				53FDB3C02223D7D300848CFF /* MDSChatModel.swift in Sources */,
 				530213DD2542658200ECED48 /* UIView+Tools.swift in Sources */,
 				53F67C272222C552004330B5 /* MDSHomeController.swift in Sources */,
+				53D7ECF02550E07B000FF495 /* MDSSlectTabController.swift in Sources */,
 				53F9745522251A9100D12070 /* MDSRequestConfig.swift in Sources */,
 				53F67C292222C579004330B5 /* MDSMinewController.swift in Sources */,
+				537FA7D4254AA07500538D30 /* MDSCutCircle.swift in Sources */,
+				537FA7D6254AA24200538D30 /* MDSImgEditView.swift in Sources */,
 				530A996825401ABD009AA866 /* MDSAPI.swift in Sources */,
+				5337827E254BB694003E1E0E /* MDSCutAreaView.swift in Sources */,
+				537FA7D2254A9B3200538D30 /* MDSCutGridLayer.swift in Sources */,
 				531F221325411578007F5C29 /* MDSLoginVC.swift in Sources */,
 				53FDB3C52223DB3C00848CFF /* MDSChatMineCell.swift in Sources */,
+				53D4F70F25513694004117D3 /* UIViewController+Ext.swift in Sources */,
 				53F67C302222C781004330B5 /* MDSConst.swift in Sources */,
 				530A9964253FD007009AA866 /* MDSResponse.swift in Sources */,
+				5329F370254FA3E7002C380B /* MDSDrageView.swift in Sources */,
 				53F67C1C2222BBB4004330B5 /* MDSNavController.swift in Sources */,
 				530213E12542843100ECED48 /* ScrollView+MJ.swift in Sources */,
 				53F67BED2222BB54004330B5 /* AppDelegate.swift in Sources */,
+				5329F377255009F1002C380B /* MDSChoseImgsTool.swift in Sources */,
 				53F67C2B2222C58E004330B5 /* MDSOrderController.swift in Sources */,
 				53FDB3C32223DB1100848CFF /* MDSChatBaseCell.swift in Sources */,
+				536ED868254904EC00602BAB /* MDSEditImgView.swift in Sources */,
 				53FDB3C72223DBB400848CFF /* MDSChatNotMineCell.swift in Sources */,
+				536ED8662548F8DD00602BAB /* MDSChoseImageTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,14 +781,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GEUX5D8A35;
+				DEVELOPMENT_TEAM = MNPPQD39ZB;
 				INFOPLIST_FILE = MDS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = rainsoft.com.MDS;
+				PRODUCT_BUNDLE_IDENTIFIER = rainjsoft.com.JiGouBao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MDS/MDS_bridge.h";
 				SWIFT_VERSION = 5.0;
@@ -719,14 +807,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GEUX5D8A35;
+				DEVELOPMENT_TEAM = MNPPQD39ZB;
 				INFOPLIST_FILE = MDS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = rainsoft.com.MDS;
+				PRODUCT_BUNDLE_IDENTIFIER = rainjsoft.com.JiGouBao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MDS/MDS_bridge.h";
 				SWIFT_VERSION = 5.0;

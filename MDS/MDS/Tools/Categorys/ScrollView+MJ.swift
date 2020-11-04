@@ -12,6 +12,7 @@ extension UIScrollView{
     
     typealias RefreashHeader = (() -> (Void))
     typealias RefreashFooter = (() -> (Void))
+    
     func addMJHeader(refreash:@escaping RefreashHeader) {
         let mjHeader = MJRefreshNormalHeader.init {
             refreash();
@@ -26,7 +27,9 @@ extension UIScrollView{
         //修改文字
         mjFooter.setTitle("上拉加载", for: .idle)//普通闲置的状态
         mjFooter.setTitle("正在加载中", for: .refreshing)//正在刷新的状态
-        mjFooter.setTitle("\n我是有底线的", for: .noMoreData)//数据加载完毕的状态
+        mjFooter.setTitle("--- 我是有底线的 ---", for: .noMoreData)//数据加载完毕的状态
+        mjFooter.stateLabel?.numberOfLines = 0
+        mjFooter.stateLabel?.textColor = .lightGray
         self.mj_footer = mjFooter
     }
     

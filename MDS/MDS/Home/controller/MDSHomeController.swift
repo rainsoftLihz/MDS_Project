@@ -15,8 +15,12 @@ class MDSHomeController: MDSBaseController,UICollectionViewDelegate,UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addTitle(title: "首页")
         self.view.addSubview(self.collectionView);
-        
+        self.collectionView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.myNavView.snp_bottom)
+            make.left.right.bottom.equalToSuperview()
+        }
         self.collectionView.addMJHeader {
             self.page = 1
             self.loadData();
@@ -78,7 +82,7 @@ class MDSHomeController: MDSBaseController,UICollectionViewDelegate,UICollection
         layout.minimumInteritemSpacing = 0;
         layout.scrollDirection = .vertical;
         
-        let collection = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: layout);
+        let collection = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout);
         collection.delegate = self;
         collection.dataSource = self;
         collection.showsVerticalScrollIndicator = false;

@@ -22,13 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white;
         
         window?.makeKeyAndVisible();
-        self.gotoLogin()
+        gotoHome()
         return true
     }
 
 
     func gotoLogin() {
-        window?.rootViewController = MDSLoginVC.init()
+        window?.rootViewController = MDSLoginVC()
     }
     
     func gotoHome() {

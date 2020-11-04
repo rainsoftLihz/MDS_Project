@@ -13,29 +13,29 @@ class MDSHomeViewCell: UICollectionViewCell {
     let btnH:CGFloat = 34.0
     
     lazy var titleLab:UILabel = {
-        let titleLab = self.createLab(color: .black, fontSize: 14)
+        let titleLab = UIView.createLab(color: .black, fontSize: 14)
         titleLab.numberOfLines = 2
         return titleLab
     }()
     
     lazy var classLab:UILabel = {
-        let classLab = self.createLab(color: .lightGray, fontSize: 12)
+        let classLab = UIView.createLab(color: .lightGray, fontSize: 12)
         return classLab
     }()
     
     lazy var timeLab:UILabel = {
-        let tempLab = self.createLab(text: "", color: .blue, fontSize: 12,alignment: .center)
+        let tempLab = UIView.createLab(text: "", color: .blue, fontSize: 12,alignment: .center)
         return tempLab
     }()
     
     lazy var pgBtn:UIButton = {
-        let temp = self.createBtn(title: "去批阅", titleColor: .black, fontSize: 14)
+        let temp = UIView.createBtn(title: "去批阅", titleColor: .black, fontSize: 14)
         temp.cornerRadius(cornerRadius: CGFloat(self.btnH/2))
         return temp
     }()
     
     lazy var printBtn:UIButton = {
-        let temp = self.createBtn(title: "打印痕迹", titleColor: .black, fontSize: 14)
+        let temp = UIView.createBtn(title: "打印痕迹", titleColor: .black, fontSize: 14)
         temp.cornerRadius(cornerRadius: CGFloat(self.btnH/2))
         return temp
     }()
@@ -56,7 +56,7 @@ class MDSHomeViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColorFromRGB(0xf6f6f6)
-        let bgView = self.createView(backgroundColor: .white)
+        let bgView = UIView.createView(backgroundColor: .white)
         bgView.cornerRadius(cornerRadius: 3.0)
         self.addSubViews([bgView,timeLab])
         bgView.addSubViews([titleLab,pgBtn,classLab,printBtn])

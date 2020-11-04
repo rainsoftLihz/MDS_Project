@@ -8,10 +8,99 @@
 
 import Foundation
 import UIKit
+import CoreGraphics
 
 let borderWidth:CGFloat = 0.8
 
+enum UIRectCornerType {
+    case UIRectCornerTopLeft,
+         UIRectCornerTopRight,
+         UIRectCornerBottomLeft,
+         UIRectCornerBottomRight,
+         UIRectCornerAll
+    func corner() -> UIRectCorner {
+        switch self {
+            case .UIRectCornerTopRight:
+                return UIRectCorner.topRight
+            case .UIRectCornerTopLeft:
+                return UIRectCorner.topLeft
+            case .UIRectCornerBottomRight:
+                return UIRectCorner.bottomRight
+            case .UIRectCornerBottomLeft:
+                return UIRectCorner.bottomLeft
+            default:
+                return UIRectCorner.allCorners
+        }
+    }
+}
+
+typealias TapBlock = ()->Void
+
 extension UIView{
+    
+    var tapBlock: TapBlock? {
+        set {
+            objc_setAssociatedObject(self, RuntimeKey.ClickBlockKey!, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        
+        get {
+            return  (objc_getAssociatedObject(self, RuntimeKey.ClickBlockKey!) as! TapBlock)
+        }
+    }
+    
+    //MARK: ---点击事件
+    func tapAction(block:@escaping TapBlock) {
+        self.tapBlock = block
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapGestureRecognizer))
+        self.addGestureRecognizer(tap)
+        self.isUserInteractionEnabled = true
+    }
+    
+    @objc func tapGestureRecognizer(){
+        self.tapBlock!()
+    }
+    
+//MARK: --- 计算文字宽度高度
+   static func calculateWidth(font: UIFont ,text : String) -> CGFloat {
+        let constraintRect = CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT))
+        let boundingBox = text.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+         return boundingBox.width
+    }
+    
+    static func calculateHeight(font: UIFont ,text : String) -> CGFloat {
+        let constraintRect = CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT))
+        let boundingBox = text.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+         return boundingBox.height
+    }
+    
+    static func calculateSize(font: UIFont ,text : String) -> CGSize {
+        let constraintRect = CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT))
+        let boundingBox = text.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        return boundingBox.size
+    }
+ 
+//MARK: - UIView转UIImage
+    static func getImageFromView(theView: UIView,rect: CGRect) ->UIImage{
+        UIGraphicsBeginImageContextWithOptions(theView.frame.size,false, UIScreen.main.scale);
+        let context:CGContext = UIGraphicsGetCurrentContext()!
+        context.saveGState();
+        
+        UIRectClip(rect);
+        theView.layer.render(in: context)
+        let theImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!;
+        UIGraphicsEndImageContext();
+        UIImageWriteToSavedPhotosAlbum(theImage, nil, nil, nil)
+        return theImage
+    }
+    
+//MARK: - UIView转UIImage
+    static func getImageFromView(view: UIView) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(view.frame.size, false, UIScreen.main.scale)
+    view.layer.render(in: UIGraphicsGetCurrentContext()!)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image!
+    }
     
 //MARK: ----addSubView
     func addSubViews(_ views:[UIView])  {
@@ -24,6 +113,15 @@ extension UIView{
     func cornerRadius(cornerRadius:CGFloat) {
         self.layer.cornerRadius = cornerRadius
         self.layer.borderWidth = borderWidth
+        self.layer.masksToBounds = true
+    }
+    
+    func cornerRadius(cornerRadius:CGFloat,corner:UIRectCorner) {
+        let maskPath:UIBezierPath = UIBezierPath.init(roundedRect: self.bounds, byRoundingCorners: corner, cornerRadii: CGSize.init(width: cornerRadius, height: cornerRadius))
+        let layer:CAShapeLayer = CAShapeLayer.init()
+        layer.frame = self.bounds
+        layer.path = maskPath.cgPath
+        self.layer.mask = layer
         self.layer.masksToBounds = true
     }
     

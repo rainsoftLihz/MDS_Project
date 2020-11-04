@@ -11,10 +11,8 @@ class MDSChatController: MDSBaseController,UITableViewDelegate,UITableViewDataSo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "聊天";
-        // Do any additional setup after loading the view.
+        self.addTitle(title: "聊天")
         self.view.addSubview(self.tableView);
-        
         self.requestData();
     }
     
@@ -87,7 +85,7 @@ class MDSChatController: MDSBaseController,UITableViewDelegate,UITableViewDataSo
     }
     
     lazy var tableView : UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x:0, y:0, width: SCREEN_WIDTH, height:SCREEN_HEIGHT), style: UITableView.Style.plain);
+        let tableView = UITableView.init(frame: CGRect(x:0, y:self.myNavView.maxY, width: SCREEN_WIDTH, height:SCREEN_HEIGHT-self.myNavView.maxY), style: UITableView.Style.plain);
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.backgroundColor = UIColorFromRGB(0xe5e5e5);
@@ -137,16 +135,5 @@ class MDSChatController: MDSBaseController,UITableViewDelegate,UITableViewDataSo
         NSLog("index=====%d", indexPath.row);
         NSLog("content=======%@", backModel.content ?? "");
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

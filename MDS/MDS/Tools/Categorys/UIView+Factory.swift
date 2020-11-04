@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension NSObject {
+extension UIView {
 
 //网络加载
     public class func showHud(){
@@ -23,21 +23,25 @@ extension NSObject {
         SVProgressHUD.showSuccess(withStatus: text)
     }
     
-    public class func showTipsText(_ text:String){
+    public class func showErrorText(_ text:String){
         SVProgressHUD.showError(withStatus: text)
+    }
+    
+    public class func showTipsText(_ text:String){
+        SVProgressHUD.showInfo(withStatus: text)
     }
     
     
 //MARK: ---Lab
-    func createLab(color:UIColor,fontSize:CGFloat) -> UILabel {
+    public class func createLab(color:UIColor,fontSize:CGFloat) -> UILabel {
         return self.createLab(text:"", color: color, fontSize: fontSize, alignment: .left)
     }
     
-    func createLab(text:String,color:UIColor,fontSize:CGFloat) -> UILabel {
+    public class func createLab(text:String,color:UIColor,fontSize:CGFloat) -> UILabel {
         return self.createLab(text:text, color: color, fontSize: fontSize, alignment: .left)
     }
     
-    func createLab(text:String,color:UIColor,fontSize:CGFloat,alignment:NSTextAlignment) -> UILabel {
+    public class func createLab(text:String,color:UIColor,fontSize:CGFloat,alignment:NSTextAlignment) -> UILabel {
         let tempLab = UILabel.init()
         tempLab.text = text
         tempLab.textColor = color
@@ -47,18 +51,18 @@ extension NSObject {
     }
     
 //MARK: ---Btn
-    func createBtn(title:String,titleColor:UIColor,fontSize:CGFloat) -> UIButton {
+    public class func createBtn(title:String,titleColor:UIColor,fontSize:CGFloat) -> UIButton {
         return self.createBtn(title: title, titleColor: titleColor, fontSize: fontSize, img: nil)
     }
     
-    func createBtn(img:UIImage?) -> UIButton {
+    public class func createBtn(img:UIImage?) -> UIButton {
         let tempBtn = UIButton.init(type: .custom)
         tempBtn.setImage(img, for: .normal)
         tempBtn.setImage(img, for: .highlighted)
         return tempBtn
     }
     
-    func createBtn(title:String,titleColor:UIColor,fontSize:CGFloat,img:UIImage?) -> UIButton {
+    public class func createBtn(title:String,titleColor:UIColor,fontSize:CGFloat,img:UIImage?) -> UIButton {
         let tempBtn = UIButton.init(type: .custom)
         tempBtn.setTitle(title, for: .normal)
         tempBtn.setTitleColor(titleColor, for: .normal)
@@ -70,7 +74,7 @@ extension NSObject {
     }
     
 //MARK: ---textF
-    func createTextF(placeHolder:String,color:UIColor,fontSize:CGFloat) -> UITextField {
+    public class func createTextF(placeHolder:String,color:UIColor,fontSize:CGFloat) -> UITextField {
         let tempTF = UITextField.init()
         tempTF.placeholder = placeHolder
         tempTF.font = UIFont.systemFont(ofSize: fontSize)
@@ -78,7 +82,7 @@ extension NSObject {
         return tempTF
     }
     
-    func createTextF(placeHolder:String,holderColor:UIColor,color:UIColor,fontSize:CGFloat) -> UITextField {
+    public class func createTextF(placeHolder:String,holderColor:UIColor,color:UIColor,fontSize:CGFloat) -> UITextField {
         let tempTF = UITextField.init()
         tempTF.font = UIFont.systemFont(ofSize: fontSize)
         tempTF.textColor = color
@@ -88,7 +92,7 @@ extension NSObject {
     }
     
 //MARK: ---view
-    func createView(backgroundColor:UIColor) -> UIView {
+    public class func createView(backgroundColor:UIColor) -> UIView {
         let tempView = UIView.init()
         tempView.backgroundColor = backgroundColor
         return tempView
