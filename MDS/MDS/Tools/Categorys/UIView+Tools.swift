@@ -80,7 +80,7 @@ extension UIView{
     }
  
 //MARK: - UIView转UIImage
-    static func getImageFromView(theView: UIView,rect: CGRect) ->UIImage{
+    static func getImageFromView(theView: UIView,rect: CGRect) ->UIImage?{
         UIGraphicsBeginImageContextWithOptions(theView.frame.size,false, UIScreen.main.scale);
         let context:CGContext = UIGraphicsGetCurrentContext()!
         context.saveGState();
@@ -94,7 +94,7 @@ extension UIView{
     }
     
 //MARK: - UIView转UIImage
-    static func getImageFromView(view: UIView) -> UIImage {
+    static func getImageFromView(view: UIView) -> UIImage? {
     UIGraphicsBeginImageContextWithOptions(view.frame.size, false, UIScreen.main.scale)
     view.layer.render(in: UIGraphicsGetCurrentContext()!)
     let image = UIGraphicsGetImageFromCurrentImageContext()

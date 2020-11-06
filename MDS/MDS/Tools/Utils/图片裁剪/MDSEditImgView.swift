@@ -66,7 +66,6 @@ class MDSEditImgView: UIView,MDSCutAreaViewDelegate{
         viewRect.y += Point.y;
         
         rect.origin = viewRect
-        
         imgView.frame = rect
         //初始化translation
         dragGesture.setTranslation(CGPoint.init(x: 0, y: 0), in: view)
@@ -98,7 +97,7 @@ class MDSEditImgView: UIView,MDSCutAreaViewDelegate{
     
     //MARK: ---编辑过后生成图片
     func drawPictures() -> UIImage {
-        return UIView.getImageFromView(view: self.targetView)
+        return UIView.getImageFromView(view: self.targetView)!
     }
 
     

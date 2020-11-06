@@ -70,7 +70,13 @@ class MDSHomeController: MDSBaseController,UICollectionViewDelegate,UICollection
                         
                         self.collectionView.reloadData()
                     }
-                }
+                }else{
+                    if response.rtnCode == 900 {
+                        //跳转主页
+                        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+                        appDelegate.gotoLogin()
+                    }
+            }
         });
     }
 

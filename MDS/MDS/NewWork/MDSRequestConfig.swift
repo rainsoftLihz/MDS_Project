@@ -83,7 +83,7 @@ extension MoyaProvider{
                 case let .success(response):
                     do {
                         let dic = try response.mapJSON() as! [String : Any]
-                        let resultData:MDSResponse = JSONDeserializer<MDSResponse>.deserializeFrom(dict: dic)!
+                        let resultData:MDSResponse = MDSResponse.deserialize(from: dic)!
                         completion(resultData)
                     } catch {
                         let resultData:MDSResponse = MDSResponse.init()

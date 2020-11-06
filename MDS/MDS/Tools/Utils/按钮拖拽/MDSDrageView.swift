@@ -117,8 +117,6 @@ class MDSDrageView: UIView {
                 self.titleLab.text = "未分配"
                 break
        }
-//        self.addSubview(bkView)
-//        bkView.myFrame(0, 50, SCREEN_HEIGHT, 150)
     }
     
     required init?(coder: NSCoder) {

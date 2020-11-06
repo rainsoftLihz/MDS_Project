@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class MDSPickImgController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MDSPickImgController: MDSBaseController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     //默认每行现实几个
     let numForRow:Int = 4
@@ -51,7 +51,7 @@ class MDSPickImgController: UIViewController, UICollectionViewDelegate, UICollec
     lazy var toolBar:UIView = {
         let temp = UIView.createView(backgroundColor: .black)
         let h:CGFloat = CGFloat(49+SAFE_AREA_Height)
-        temp.myFrame(0, SCREEN_HEIGHT-NAV_BAR_HEIGHT-h, SCREEN_WIDTH, h)
+        temp.myFrame(0, SCREEN_HEIGHT-h, SCREEN_WIDTH, h)
         temp.addSubview(completeButton)
         completeButton.snp.makeConstraints { (make) in
             make.right.equalTo(-10)
@@ -79,7 +79,7 @@ class MDSPickImgController: UIViewController, UICollectionViewDelegate, UICollec
         layout.scrollDirection = .vertical;
         
         let collection = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
-        collection.myFrame(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-self.toolBar.height-NAV_BAR_HEIGHT)
+        collection.myFrame(0, self.myNavView.maxY, SCREEN_WIDTH, SCREEN_HEIGHT-self.toolBar.height-NAV_BAR_HEIGHT)
         collection.delegate = self
         collection.allowsMultipleSelection = true
         collection.dataSource = self
@@ -104,18 +104,10 @@ class MDSPickImgController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func setNavBar(){
-        self.navigationController?.navigationBar.isTranslucent = false
-               self.title = "相册"
-               
-       //设置导航栏背景颜色
-       self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0x333333)
-       //  设置导航栏标题颜色
-       self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-               
-        //添加导航栏右侧的取消按钮
-        let cancelBtn:UIButton = UIView.createBtn(title: "取消", titleColor: .white, fontSize: 15)
-        cancelBtn.addTarget(self, action: #selector(cancel), for: .touchUpInside)
-        self.addRightNav(button: cancelBtn)
+        self.myNavView.backgroundColor = UIColorFromRGB(0x333333)
+        self.addTitle(title: "相册")
+        self.titleLab.textColor = .white
+        self.addRightNav(title: "取消")
     }
     
     //重置缓存
@@ -125,7 +117,7 @@ class MDSPickImgController: UIViewController, UICollectionViewDelegate, UICollec
     }
    
     //MARK: ---取消
-    @objc func cancel(){
+    @objc override func rightBtnClick(){
         if (self.presentingViewController != nil) {
             self.dismiss(animated: true, completion: nil)
         }else{
