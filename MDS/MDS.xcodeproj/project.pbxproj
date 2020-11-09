@@ -15,6 +15,7 @@
 		530A99662540121C009AA866 /* MDSHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530A99652540121C009AA866 /* MDSHomeModel.swift */; };
 		530A996825401ABD009AA866 /* MDSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530A996725401ABC009AA866 /* MDSAPI.swift */; };
 		530A996A25401BD5009AA866 /* MDSConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530A996925401BD5009AA866 /* MDSConfig.swift */; };
+		531C2C8E2558CBD00070E3F6 /* MDSCyclicScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531C2C8D2558CBD00070E3F6 /* MDSCyclicScrollView.swift */; };
 		531F221325411578007F5C29 /* MDSLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531F221225411578007F5C29 /* MDSLoginVC.swift */; };
 		53257CFC222E1D3000C5479E /* MDSHomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53257CFA222E1D3000C5479E /* MDSHomeViewCell.swift */; };
 		5329F370254FA3E7002C380B /* MDSDrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329F36F254FA3E7002C380B /* MDSDrageView.swift */; };
@@ -77,6 +78,7 @@
 		530A99652540121C009AA866 /* MDSHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSHomeModel.swift; sourceTree = "<group>"; };
 		530A996725401ABC009AA866 /* MDSAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDSAPI.swift; sourceTree = "<group>"; };
 		530A996925401BD5009AA866 /* MDSConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSConfig.swift; sourceTree = "<group>"; };
+		531C2C8D2558CBD00070E3F6 /* MDSCyclicScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCyclicScrollView.swift; sourceTree = "<group>"; };
 		531F221225411578007F5C29 /* MDSLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSLoginVC.swift; sourceTree = "<group>"; };
 		53257CFA222E1D3000C5479E /* MDSHomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSHomeViewCell.swift; sourceTree = "<group>"; };
 		5329F36F254FA3E7002C380B /* MDSDrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSDrageView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,14 @@
 			path = "按钮拖拽";
 			sourceTree = "<group>";
 		};
+		531C2C8C2558C9A50070E3F6 /* 轮播图 */ = {
+			isa = PBXGroup;
+			children = (
+				531C2C8D2558CBD00070E3F6 /* MDSCyclicScrollView.swift */,
+			);
+			path = "轮播图";
+			sourceTree = "<group>";
+		};
 		531FED9A222D1E2A00A47270 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +229,7 @@
 		536ED8642548F8B900602BAB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				531C2C8C2558C9A50070E3F6 /* 轮播图 */,
 				531B1B312552AB2400DDC15D /* 按钮拖拽 */,
 				53D7ECEE2550E030000FF495 /* 选择器 */,
 				5329F371254FF845002C380B /* 图片选择 */,
@@ -594,6 +605,7 @@
 				53F67C302222C781004330B5 /* MDSConst.swift in Sources */,
 				530A9964253FD007009AA866 /* MDSResponse.swift in Sources */,
 				5329F370254FA3E7002C380B /* MDSDrageView.swift in Sources */,
+				531C2C8E2558CBD00070E3F6 /* MDSCyclicScrollView.swift in Sources */,
 				53F67C1C2222BBB4004330B5 /* MDSNavController.swift in Sources */,
 				530213E12542843100ECED48 /* ScrollView+MJ.swift in Sources */,
 				53F67BED2222BB54004330B5 /* AppDelegate.swift in Sources */,

@@ -13,18 +13,14 @@ class MDSOrderController: MDSBaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.addTitle(title: "订单")
+        
+        let urlArray = ["http://i.imgur.com/7Ze2PdG.png","http://i.imgur.com/cAfBaMR.png","http://i.imgur.com/AimYvXb.png"]
+        
+        let cycleView:MDSCyclicScrollView = MDSCyclicScrollView.init(frame: CGRect.init(x: 0, y: self.myNavView.maxY+10, width: SCREEN_WIDTH, height: 100))
+        self.view.addSubview(cycleView)
+        cycleView.dataArr = urlArray
+         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
