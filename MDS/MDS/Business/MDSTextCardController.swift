@@ -16,24 +16,32 @@ class MDSTextCardController: MDSCardController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = .systemBlue
         self.dataArr = [1,2,3,4,5,6]
        
     }
     
-    override func configureCollectionCell(_ cell: MDSCardBaseCell, data: Any) {
-        print("打你哦 怕不怕..........")
+    override func configureCollectionCell(_ cell: MDSCardBaseCell, data: Any,indexPath:IndexPath) {
+        let textCell = cell as! MDSTextCardCell
+        textCell.backendLab.text = String.init(format: "反面%ld", indexPath.row)
+        textCell.frontLab.text = String.init(format: "正面%ld", indexPath.row)
     }
     
 }
 
 class MDSTextCardCell: MDSCardBaseCell {
     
+    var frontLab:UILabel = UIView.createLab(color: .red, fontSize: 69)
+    var backendLab:UILabel = UIView.createLab(color: .black, fontSize: 69)
      override init(frame: CGRect) {
-           super.init(frame: frame)
-        self.backendView.backgroundColor = .yellow
-        self.frontView.backgroundColor = .red
-       }
+        super.init(frame: frame)
+        self.backendView.addSubview(backendLab)
+        self.frontView.addSubview(frontLab)
+        backendLab.frame = self.backendView.bounds
+        frontLab.frame = self.frontView.bounds
+        frontLab.textAlignment = .center
+        backendLab.textAlignment = .center
+    }
     
     
     required init?(coder: NSCoder) {

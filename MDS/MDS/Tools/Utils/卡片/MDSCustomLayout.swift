@@ -43,7 +43,7 @@ class MDSCustomLayout: UICollectionViewFlowLayout {
         return array
     }
 
-    /// - Parameter proposedContentOffset: 当手指滑动的时候 最终的停止的偏移量
+    //proposedContentOffset: 当手指滑动的时候 最终的停止的偏移量
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         let visibleX = proposedContentOffset.x
         let visibleY = proposedContentOffset.y
