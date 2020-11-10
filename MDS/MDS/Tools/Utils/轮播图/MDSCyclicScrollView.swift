@@ -10,9 +10,13 @@ import UIKit
 
 
 
-class MDSCyclicScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
+class MDSCyclicScrollView: UIView,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     let kCYScrollCellId = "kCYScrollCellId"
+    
+    var didSelectClosure:((Int)->())?
+    
+    var autoRun:Bool = true
     
     //定时器
     private var timer:Timer?
@@ -32,7 +36,6 @@ class MDSCyclicScrollView: UIView,UICollectionViewDataSource,UICollectionViewDel
         layout.minimumLineSpacing = 0
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize.zero
         let collectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.isPagingEnabled = true
@@ -49,6 +52,10 @@ class MDSCyclicScrollView: UIView,UICollectionViewDataSource,UICollectionViewDel
     public lazy var pageControl:UIPageControl = {
         let pageControl:UIPageControl = UIPageControl()
         pageControl.translatesAutoresizingMaskIntoConstraints = false
+        //设置pageControl未选中的点的颜色
+        pageControl.pageIndicatorTintColor = UIColor.gray
+        //设置pageControl选中的点的颜色
+        pageControl.currentPageIndicatorTintColor = UIColor.red
         return pageControl
     }()
     
@@ -61,11 +68,18 @@ class MDSCyclicScrollView: UIView,UICollectionViewDataSource,UICollectionViewDel
         self.collectionView.myFrame(10, 10, self.width-20, self.height-20)
     }
     
+    convenience init(frame: CGRect,dataArr: [Any],didSelectClosure:@escaping ((Int)->())) {
+        self.init(frame: frame)
+        self.dataArr = dataArr
+        self.didSelectClosure = didSelectClosure
+    }
+    
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK:---delegets
+    //MARK:---delegetes
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.dataArr == nil {
             return 0
@@ -86,7 +100,7 @@ class MDSCyclicScrollView: UIView,UICollectionViewDataSource,UICollectionViewDel
         if data is String {
             if let urlString = data as? String{
                 let url:URL = URL(string: urlString)!
-                bannerCell.imageView.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                bannerCell.imageView.kf.setImage(with: url)
             }
         }else if data is UIImage {
             if let image = data as? UIImage{
@@ -97,14 +111,15 @@ class MDSCyclicScrollView: UIView,UICollectionViewDataSource,UICollectionViewDel
         return bannerCell
     }
     
-    func collectionView(collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize.init(width: self.collectionView.width, height: self.collectionView.width)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+        return CGSize.init(width: self.collectionView.width, height: self.collectionView.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let index = self.transferIndex(indexPath.row)
+        if (self.didSelectClosure != nil) {
+            self.didSelectClosure!(index)
+        }
     }
     
     
@@ -159,13 +174,17 @@ class MDSCyclicScrollView: UIView,UICollectionViewDataSource,UICollectionViewDel
     //MARK:--- 重置定时器
     func resetTimer(){
         
+        if self.autoRun == false {
+            return
+        }
+        
         self.timer?.invalidate()
         
         if(self.dataArr == nil || self.dataArr!.count<2) {
             return
         }
         
-        let timeInterval:Double = 0.5
+        let timeInterval:Double = 2.5
         self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(timerRun), userInfo: nil, repeats: true);
        
         RunLoop.current.add(self.timer!, forMode: .common)
@@ -217,6 +236,8 @@ class MDSCyclicCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addSubview(self.imageView)
+        self.imageView.frame = self.bounds
     }
     
     required init?(coder: NSCoder) {

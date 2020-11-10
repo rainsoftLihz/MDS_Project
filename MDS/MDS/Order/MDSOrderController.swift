@@ -15,11 +15,13 @@ class MDSOrderController: MDSBaseController {
 
         self.addTitle(title: "订单")
         
-        let urlArray = ["http://i.imgur.com/7Ze2PdG.png","http://i.imgur.com/cAfBaMR.png","http://i.imgur.com/AimYvXb.png"]
+         let imageArray = [UIImage(named: "banner_1")!,UIImage(named: "banner_2")!,UIImage(named: "banner_3")!,UIImage(named: "banner_4")!] //["http://i.imgur.com/7Ze2PdG.png","http://i.imgur.com/cAfBaMR.png","http://i.imgur.com/AimYvXb.png"]
         
-        let cycleView:MDSCyclicScrollView = MDSCyclicScrollView.init(frame: CGRect.init(x: 0, y: self.myNavView.maxY+10, width: SCREEN_WIDTH, height: 100))
+        let cycleView:MDSCyclicScrollView = MDSCyclicScrollView.init(frame: CGRect.init(x: 0, y: self.myNavView.maxY+10, width: SCREEN_WIDTH, height: 100), dataArr: imageArray) { (index) in
+            print("==========\(index)")
+        }
         self.view.addSubview(cycleView)
-        cycleView.dataArr = urlArray
+        cycleView.dataArr = imageArray
          
     }
 

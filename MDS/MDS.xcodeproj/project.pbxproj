@@ -24,10 +24,14 @@
 		5329F377255009F1002C380B /* MDSChoseImgsTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329F376255009F1002C380B /* MDSChoseImgsTool.swift */; };
 		5330A1972546B0E300B83378 /* MDSLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330A1962546B0E300B83378 /* MDSLoginAPI.swift */; };
 		5330A1992546B0F300B83378 /* MDSHomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330A1982546B0F300B83378 /* MDSHomeAPI.swift */; };
+		53368124255943D2006E4669 /* MDSCustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53368123255943D2006E4669 /* MDSCustomLayout.swift */; };
 		5337827E254BB694003E1E0E /* MDSCutAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5337827D254BB694003E1E0E /* MDSCutAreaView.swift */; };
 		536ED868254904EC00602BAB /* MDSEditImgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536ED867254904EC00602BAB /* MDSEditImgView.swift */; };
 		536ED86A25490E3C00602BAB /* MDSEditImgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536ED86925490E3C00602BAB /* MDSEditImgController.swift */; };
 		537FA7D2254A9B3200538D30 /* MDSCutGridLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537FA7D1254A9B3200538D30 /* MDSCutGridLayer.swift */; };
+		538AA66F25592F0200A4FDF9 /* MDSCardBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538AA66E25592F0200A4FDF9 /* MDSCardBaseCell.swift */; };
+		538AA6712559341D00A4FDF9 /* MDSCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538AA6702559341D00A4FDF9 /* MDSCardController.swift */; };
+		538AA6732559380600A4FDF9 /* MDSTextCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538AA6722559380600A4FDF9 /* MDSTextCardController.swift */; };
 		53D49405222379B30073FCE2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53D49404222379B30073FCE2 /* Images.xcassets */; };
 		53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D4940722239B110073FCE2 /* MDSChatController.swift */; };
 		53D4F70F25513694004117D3 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D4F70E25513694004117D3 /* UIViewController+Ext.swift */; };
@@ -87,10 +91,14 @@
 		5329F376255009F1002C380B /* MDSChoseImgsTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChoseImgsTool.swift; sourceTree = "<group>"; };
 		5330A1962546B0E300B83378 /* MDSLoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSLoginAPI.swift; sourceTree = "<group>"; };
 		5330A1982546B0F300B83378 /* MDSHomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSHomeAPI.swift; sourceTree = "<group>"; };
+		53368123255943D2006E4669 /* MDSCustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCustomLayout.swift; sourceTree = "<group>"; };
 		5337827D254BB694003E1E0E /* MDSCutAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCutAreaView.swift; sourceTree = "<group>"; };
 		536ED867254904EC00602BAB /* MDSEditImgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSEditImgView.swift; sourceTree = "<group>"; };
 		536ED86925490E3C00602BAB /* MDSEditImgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSEditImgController.swift; sourceTree = "<group>"; };
 		537FA7D1254A9B3200538D30 /* MDSCutGridLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCutGridLayer.swift; sourceTree = "<group>"; };
+		538AA66E25592F0200A4FDF9 /* MDSCardBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCardBaseCell.swift; sourceTree = "<group>"; };
+		538AA6702559341D00A4FDF9 /* MDSCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCardController.swift; sourceTree = "<group>"; };
+		538AA6722559380600A4FDF9 /* MDSTextCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSTextCardController.swift; sourceTree = "<group>"; };
 		53D49404222379B30073FCE2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		53D4940722239B110073FCE2 /* MDSChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSChatController.swift; sourceTree = "<group>"; };
 		53D4F70E25513694004117D3 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
@@ -229,6 +237,7 @@
 		536ED8642548F8B900602BAB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				538AA66D255929B600A4FDF9 /* 卡片 */,
 				531C2C8C2558C9A50070E3F6 /* 轮播图 */,
 				531B1B312552AB2400DDC15D /* 按钮拖拽 */,
 				53D7ECEE2550E030000FF495 /* 选择器 */,
@@ -247,6 +256,16 @@
 				5337827D254BB694003E1E0E /* MDSCutAreaView.swift */,
 			);
 			path = "图片裁剪";
+			sourceTree = "<group>";
+		};
+		538AA66D255929B600A4FDF9 /* 卡片 */ = {
+			isa = PBXGroup;
+			children = (
+				538AA66E25592F0200A4FDF9 /* MDSCardBaseCell.swift */,
+				538AA6702559341D00A4FDF9 /* MDSCardController.swift */,
+				53368123255943D2006E4669 /* MDSCustomLayout.swift */,
+			);
+			path = "卡片";
 			sourceTree = "<group>";
 		};
 		53D4940622239AF00073FCE2 /* Chat */ = {
@@ -353,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				53F67C2C2222C5A4004330B5 /* MDSBussinessController.swift */,
+				538AA6722559380600A4FDF9 /* MDSTextCardController.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -587,7 +607,9 @@
 				530A99662540121C009AA866 /* MDSHomeModel.swift in Sources */,
 				53D4940822239B110073FCE2 /* MDSChatController.swift in Sources */,
 				53F67C252222C513004330B5 /* MDSBaseController.swift in Sources */,
+				538AA6732559380600A4FDF9 /* MDSTextCardController.swift in Sources */,
 				530A996A25401BD5009AA866 /* MDSConfig.swift in Sources */,
+				538AA6712559341D00A4FDF9 /* MDSCardController.swift in Sources */,
 				536ED86A25490E3C00602BAB /* MDSEditImgController.swift in Sources */,
 				5330A1992546B0F300B83378 /* MDSHomeAPI.swift in Sources */,
 				53FDB3C02223D7D300848CFF /* MDSChatModel.swift in Sources */,
@@ -599,9 +621,11 @@
 				530A996825401ABD009AA866 /* MDSAPI.swift in Sources */,
 				5337827E254BB694003E1E0E /* MDSCutAreaView.swift in Sources */,
 				537FA7D2254A9B3200538D30 /* MDSCutGridLayer.swift in Sources */,
+				538AA66F25592F0200A4FDF9 /* MDSCardBaseCell.swift in Sources */,
 				531F221325411578007F5C29 /* MDSLoginVC.swift in Sources */,
 				53FDB3C52223DB3C00848CFF /* MDSChatMineCell.swift in Sources */,
 				53D4F70F25513694004117D3 /* UIViewController+Ext.swift in Sources */,
+				53368124255943D2006E4669 /* MDSCustomLayout.swift in Sources */,
 				53F67C302222C781004330B5 /* MDSConst.swift in Sources */,
 				530A9964253FD007009AA866 /* MDSResponse.swift in Sources */,
 				5329F370254FA3E7002C380B /* MDSDrageView.swift in Sources */,

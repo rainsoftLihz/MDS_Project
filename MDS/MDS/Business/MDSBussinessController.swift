@@ -56,8 +56,8 @@ class MDSBussinessController: MDSBaseController {
         }
     }
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.navigationController?.pushViewController(MDSChatController(), animated: true);
-//    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.navigationController?.pushViewController(MDSTextCardController(), animated: true);
+    }
 
 }
