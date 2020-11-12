@@ -30,7 +30,7 @@ class MDSHomeController: MDSBaseController,UICollectionViewDelegate,UICollection
            self.loadData();
         }
         
-        self.collectionView.mj_header?.beginRefreshing()
+        //self.collectionView.mj_header?.beginRefreshing()
     }
     
     @objc func loadData()  {

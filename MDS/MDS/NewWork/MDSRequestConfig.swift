@@ -34,7 +34,7 @@ public let myEndpointClosure = {(target:TargetType) -> Endpoint in
         }
         return endpoint.adding(newHTTPHeaderFields: ["cookie":myCookie])
     }
-    return endpoint;
+    return endpoint.adding(newHTTPHeaderFields: ["Authorization":"32e5f39f-7efe-453c-ab3d-2e5ce2095cb0"]);
 }
 
 //设置超时时长等

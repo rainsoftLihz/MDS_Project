@@ -206,7 +206,6 @@ class MDSCyclicScrollView: UIView,UICollectionViewDataSource,UICollectionViewDel
         self.collectionView.reloadData()
         self.resetTimer()
         if let datas = self.dataArr, datas.count>1 {
-            //it's unable to scroll before the collectionview is shown
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.01) {
                 self.collectionView.scrollToItem(at: IndexPath(item: 1, section: 0), at: [.top,.left], animated: false)
             }

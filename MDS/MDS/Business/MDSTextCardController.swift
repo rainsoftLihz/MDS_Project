@@ -8,26 +8,50 @@
 
 import UIKit
 
-class MDSTextCardController: MDSCardController {
- 
-    override var cellClass: MDSCardBaseCell.Type{
-        return MDSTextCardCell.self
+class MDSTextCardController: MDSBaseController,MDSCardViewDataSource {
+    
+    let registerID = "MDSCardBaseCell"
+    
+    //数据源
+    var dataArr:[Any] = [] {
+        didSet{
+            self.cardView.dataArr = dataArr
+        }
     }
-
+    
+    let cardView:MDSCardView = MDSCardView.init(frame: CGRect.init(x: 0, y: NAV_BAR_HEIGHT+10, width: SCREEN_WIDTH, height:SCREEN_HEIGHT-NAV_BAR_HEIGHT-50-SAFE_AREA_Height ))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBlue
-        self.dataArr = [1,2,3,4,5,6]
-       
+        self.view.backgroundColor = .brown
+        self.addTitle(title: "卡片")
+        self.view.addSubview(self.cardView)
+        self.cardView.dataSource = self
+        self.cardView.isCanScale = false
+        self.cardView.didScrollEndDraggingClosure = {(index) in
+            print("index ===== \(index)")
+        }
+    }
+
+
+    func configCollectionCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        collectionView.register(MDSTextCardCell.self, forCellWithReuseIdentifier: self.registerID)
+        let cardCell:MDSTextCardCell = collectionView.dequeueReusableCell(withReuseIdentifier: self.registerID, for: indexPath) as! MDSTextCardCell
+        cardCell.backendLab.text = String.init(format: "反面%ld", indexPath.row)
+        cardCell.frontLab.text = String.init(format: "正面%ld", indexPath.row)
+        return cardCell
     }
     
-    override func configureCollectionCell(_ cell: MDSCardBaseCell, data: Any,indexPath:IndexPath) {
-        let textCell = cell as! MDSTextCardCell
-        textCell.backendLab.text = String.init(format: "反面%ld", indexPath.row)
-        textCell.frontLab.text = String.init(format: "正面%ld", indexPath.row)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        var arr:[Int] = []
+        for i in 0..<10 {
+            arr.append(i)
+        }
+        self.dataArr.append(contentsOf: arr)
     }
-    
 }
+
+
 
 class MDSTextCardCell: MDSCardBaseCell {
     
