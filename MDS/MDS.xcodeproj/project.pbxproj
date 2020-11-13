@@ -38,6 +38,9 @@
 		53D75A91255A9264002A0F24 /* MDSCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D75A90255A9264002A0F24 /* MDSCardView.swift */; };
 		53D7ECF02550E07B000FF495 /* MDSSlectTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D7ECEF2550E07B000FF495 /* MDSSlectTabController.swift */; };
 		53D9F94C2552318700F3B979 /* MDSBrowsePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F94B2552318700F3B979 /* MDSBrowsePhotoController.swift */; };
+		53E49F01255E16D900EE16CF /* MDSRecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E49F00255E16D900EE16CF /* MDSRecordManager.swift */; };
+		53E49F03255E1BE900EE16CF /* MDSPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E49F02255E1BE900EE16CF /* MDSPlayerManager.swift */; };
+		53E49F05255E1F2F00EE16CF /* MDSRecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E49F04255E1F2F00EE16CF /* MDSRecordController.swift */; };
 		53F67BED2222BB54004330B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67BEC2222BB54004330B5 /* AppDelegate.swift */; };
 		53F67BF22222BB54004330B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53F67BF02222BB54004330B5 /* Main.storyboard */; };
 		53F67BF42222BB56004330B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53F67BF32222BB56004330B5 /* Assets.xcassets */; };
@@ -106,6 +109,9 @@
 		53D75A90255A9264002A0F24 /* MDSCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSCardView.swift; sourceTree = "<group>"; };
 		53D7ECEF2550E07B000FF495 /* MDSSlectTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSSlectTabController.swift; sourceTree = "<group>"; };
 		53D9F94B2552318700F3B979 /* MDSBrowsePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSBrowsePhotoController.swift; sourceTree = "<group>"; };
+		53E49F00255E16D900EE16CF /* MDSRecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSRecordManager.swift; sourceTree = "<group>"; };
+		53E49F02255E1BE900EE16CF /* MDSPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSPlayerManager.swift; sourceTree = "<group>"; };
+		53E49F04255E1F2F00EE16CF /* MDSRecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSRecordController.swift; sourceTree = "<group>"; };
 		53F67BE92222BB54004330B5 /* MDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F67BEC2222BB54004330B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53F67BF12222BB54004330B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -239,6 +245,7 @@
 		536ED8642548F8B900602BAB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				53E49EFF255E16B100EE16CF /* 录音与播放 */,
 				538AA66D255929B600A4FDF9 /* 卡片 */,
 				531C2C8C2558C9A50070E3F6 /* 轮播图 */,
 				531B1B312552AB2400DDC15D /* 按钮拖拽 */,
@@ -294,6 +301,15 @@
 				53D7ECEF2550E07B000FF495 /* MDSSlectTabController.swift */,
 			);
 			path = "选择器";
+			sourceTree = "<group>";
+		};
+		53E49EFF255E16B100EE16CF /* 录音与播放 */ = {
+			isa = PBXGroup;
+			children = (
+				53E49F00255E16D900EE16CF /* MDSRecordManager.swift */,
+				53E49F02255E1BE900EE16CF /* MDSPlayerManager.swift */,
+			);
+			path = "录音与播放";
 			sourceTree = "<group>";
 		};
 		53F67BE02222BB53004330B5 = {
@@ -383,6 +399,7 @@
 			children = (
 				53F67C2C2222C5A4004330B5 /* MDSBussinessController.swift */,
 				538AA6722559380600A4FDF9 /* MDSTextCardController.swift */,
+				53E49F04255E1F2F00EE16CF /* MDSRecordController.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -631,6 +648,7 @@
 				530A996825401ABD009AA866 /* MDSAPI.swift in Sources */,
 				5337827E254BB694003E1E0E /* MDSCutAreaView.swift in Sources */,
 				537FA7D2254A9B3200538D30 /* MDSCutGridLayer.swift in Sources */,
+				53E49F03255E1BE900EE16CF /* MDSPlayerManager.swift in Sources */,
 				538AA66F25592F0200A4FDF9 /* MDSCardBaseCell.swift in Sources */,
 				531F221325411578007F5C29 /* MDSLoginVC.swift in Sources */,
 				53FDB3C52223DB3C00848CFF /* MDSChatMineCell.swift in Sources */,
@@ -638,6 +656,7 @@
 				53D4F70F25513694004117D3 /* UIViewController+Ext.swift in Sources */,
 				53368124255943D2006E4669 /* MDSCustomLayout.swift in Sources */,
 				53F67C302222C781004330B5 /* MDSConst.swift in Sources */,
+				53E49F01255E16D900EE16CF /* MDSRecordManager.swift in Sources */,
 				530A9964253FD007009AA866 /* MDSResponse.swift in Sources */,
 				5329F370254FA3E7002C380B /* MDSDrageView.swift in Sources */,
 				531C2C8E2558CBD00070E3F6 /* MDSCyclicScrollView.swift in Sources */,
@@ -648,6 +667,7 @@
 				5329F377255009F1002C380B /* MDSChoseImgsTool.swift in Sources */,
 				53F67C2B2222C58E004330B5 /* MDSOrderController.swift in Sources */,
 				53FDB3C32223DB1100848CFF /* MDSChatBaseCell.swift in Sources */,
+				53E49F05255E1F2F00EE16CF /* MDSRecordController.swift in Sources */,
 				536ED868254904EC00602BAB /* MDSEditImgView.swift in Sources */,
 				53FDB3C72223DBB400848CFF /* MDSChatNotMineCell.swift in Sources */,
 			);
