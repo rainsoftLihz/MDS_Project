@@ -60,6 +60,8 @@ class MDSPlayerManager: NSObject,AVAudioPlayerDelegate {
         }
     }
     
+    
+    //MARK: --- 播放完成
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if flag {
             print("播放完成")
