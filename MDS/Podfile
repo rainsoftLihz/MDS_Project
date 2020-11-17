@@ -3,7 +3,8 @@ platform :ios, '9.0'
 #去掉pod警告
 inhibit_all_warnings!
 #use_frameworks!
-target 'MDS' do
+
+def commonPods
     #网络请求
     pod 'Alamofire', '~> 4.7.3'
     pod 'Moya'
@@ -19,5 +20,13 @@ target 'MDS' do
     pod 'MJRefresh'
     #加载图片
     pod 'Kingfisher'
-
 end
+
+target 'MDS' do
+    commonPods
+end
+
+target 'MDSTiMmuy' do
+    commonPods
+end
+

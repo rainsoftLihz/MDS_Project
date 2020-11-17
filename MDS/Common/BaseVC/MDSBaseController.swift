@@ -13,6 +13,7 @@ class MDSBaseController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.myNavView)
+        self.view.backgroundColor = UIColorFromRGB(0xf6f6f6)
     }
     
     override func viewWillAppear(_ animated: Bool) {

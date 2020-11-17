@@ -12,8 +12,12 @@ class MDSTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addAllChildVc();
-        self.tabBar.barTintColor = UIColor.white;
+        self.addAllChildVc()
+        #if MDS
+        self.tabBar.barTintColor = UIColor.red
+        #else
+        self.tabBar.barTintColor = UIColor.yellow
+        #endif
     }
     
     //添加子控制器

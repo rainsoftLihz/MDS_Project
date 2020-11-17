@@ -15,9 +15,10 @@ class MDSBussinessController: MDSBaseController {
     var content3:MDSDrageView = MDSDrageView.init(frame: CGRect.zero, type: .unSelect)
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addTitle(title: "业务圈")
         self.view.addSubViews([content1,content2,content3])
         let H:CGFloat = 150
-        let startY:CGFloat = 80
+        let startY:CGFloat = self.myNavView.maxY
         content1.myFrame(0, startY, SCREEN_WIDTH, H)
         content2.myFrame(0,content1.maxY, SCREEN_WIDTH, H)
         content3.myFrame(0,content2.maxY, SCREEN_WIDTH, H)
