@@ -58,7 +58,7 @@ class MDSBussinessController: MDSBaseController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-       self.navigationController?.pushViewController(MDSRecordController(), animated: true);
+       self.navigationController?.pushViewController(MDSTestGestureController(), animated: true);
     }
 
 }
