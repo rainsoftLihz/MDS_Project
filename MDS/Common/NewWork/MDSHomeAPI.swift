@@ -28,7 +28,7 @@ extension MDSHomeAPI:TargetType,MoyaAddable{
         case .findHomeworkList:
             return URL.init(string: MDS_BaseURL)!
         case .uploadImgString:
-            return URL.init(string: "http://123.56.54.15")!
+            return URL.init(string: "http://123.56.54.15:80")!
         }
     }
     

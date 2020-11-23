@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 import HandyJSON
 //超时时长
-private var requestTimeOut:Double = 30;
+private var requestTimeOut:Double = 60;
 //成功数据回调
 typealias CompletBlock = ((MDSResponse) ->(Void));
 

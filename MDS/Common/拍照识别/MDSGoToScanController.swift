@@ -13,13 +13,25 @@ class MDSGoToScanController: MDSBaseController{
         super.viewDidLoad()
         self.myNavView.isHidden = true
         
+        let takeBtn:UIButton = UIButton.init(type: .custom)
+        takeBtn.setBackgroundImage(kImage("camera-black"), for: .normal)
+        takeBtn.setBackgroundImage(kImage("camera-black"), for: .highlighted)
+        takeBtn.addTarget(self, action: #selector(gotoScan), for: .touchUpInside)
+        self.view.addSubview(takeBtn)
+        takeBtn.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize.init(width: 60, height: 60))
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-60)
+        }
         
-        let camBtn:UIButton = UIView.createBtn(title: "拍照识别", titleColor: .red, fontSize: 26)
+        
+        let camBtn:UIButton = UIView.createBtn(title: "拍照识别", titleColor: .black, fontSize: 18)
         camBtn.addTarget(self, action: #selector(gotoScan), for: .touchUpInside)
         self.view.addSubview(camBtn)
         camBtn.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize.init(width: 200, height: 80))
-            make.center.equalToSuperview()
+            make.size.equalTo(CGSize.init(width: 200, height: 40))
+            make.centerX.equalToSuperview()
+            make.top.equalTo(takeBtn.snp_bottom)
         }
     }
 

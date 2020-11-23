@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		40565B7089854AC319E3EBAA /* libPods-MDS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41362C0B7CD49EEA340EE2EE /* libPods-MDS.a */; };
+		53384EAA256B4F7E00833FC2 /* MDSAIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53384EA9256B4F7E00833FC2 /* MDSAIModel.swift */; };
+		53384EAB256B4F7E00833FC2 /* MDSAIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53384EA9256B4F7E00833FC2 /* MDSAIModel.swift */; };
 		536A3310256378F7006E4E0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A330F256378F7006E4E0E /* AppDelegate.swift */; };
 		536A3316256378FA006E4E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 536A3315256378FA006E4E0E /* Assets.xcassets */; };
 		536A33662563790C006E4E0E /* MDSOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A33232563790C006E4E0E /* MDSOrderController.swift */; };
@@ -143,6 +145,7 @@
 
 /* Begin PBXFileReference section */
 		41362C0B7CD49EEA340EE2EE /* libPods-MDS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MDS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		53384EA9256B4F7E00833FC2 /* MDSAIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSAIModel.swift; sourceTree = "<group>"; };
 		536A330D256378F7006E4E0E /* MDSTiMmuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDSTiMmuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		536A330F256378F7006E4E0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		536A3315256378FA006E4E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -200,7 +203,7 @@
 		53E82DC82567F92200F71E4B /* MDSAIScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSAIScanController.swift; sourceTree = "<group>"; };
 		53E82DCC2568118500F71E4B /* MDSGoToScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSGoToScanController.swift; sourceTree = "<group>"; };
 		53E82DCF256819DE00F71E4B /* MDSScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSScanView.swift; sourceTree = "<group>"; };
-		53F67BE92222BB54004330B5 /* MDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		53F67BE92222BB54004330B5 /* 考拉云AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "考拉云AI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F67BEC2222BB54004330B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53F67BF32222BB56004330B5 /* common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = common.xcassets; sourceTree = "<group>"; };
 		53F67BF62222BB56004330B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -514,6 +517,7 @@
 				53E82DC82567F92200F71E4B /* MDSAIScanController.swift */,
 				53E82DCC2568118500F71E4B /* MDSGoToScanController.swift */,
 				53E82DCF256819DE00F71E4B /* MDSScanView.swift */,
+				53384EA9256B4F7E00833FC2 /* MDSAIModel.swift */,
 			);
 			path = "拍照识别";
 			sourceTree = "<group>";
@@ -534,7 +538,7 @@
 		53F67BEA2222BB54004330B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				53F67BE92222BB54004330B5 /* MDS.app */,
+				53F67BE92222BB54004330B5 /* 考拉云AI.app */,
 				53F67BFD2222BB56004330B5 /* MDSTests.xctest */,
 				53F67C082222BB56004330B5 /* MDSUITests.xctest */,
 				536A330D256378F7006E4E0E /* MDSTiMmuy.app */,
@@ -612,7 +616,7 @@
 			);
 			name = MDS;
 			productName = MDS;
-			productReference = 53F67BE92222BB54004330B5 /* MDS.app */;
+			productReference = 53F67BE92222BB54004330B5 /* 考拉云AI.app */;
 			productType = "com.apple.product-type.application";
 		};
 		53F67BFC2222BB56004330B5 /* MDSTests */ = {
@@ -851,6 +855,7 @@
 				536A337F2563790C006E4E0E /* MDSImgCollectionwCell.swift in Sources */,
 				536A33812563790C006E4E0E /* MDSPickImgController.swift in Sources */,
 				536A33A92563790C006E4E0E /* MDSLoginAPI.swift in Sources */,
+				53384EAB256B4F7E00833FC2 /* MDSAIModel.swift in Sources */,
 				536A33692563790C006E4E0E /* MDSHomeController.swift in Sources */,
 				536A33B92563790C006E4E0E /* MDSRecordController.swift in Sources */,
 				536A338B2563790C006E4E0E /* MDSEditImgController.swift in Sources */,
@@ -911,6 +916,7 @@
 				536A338A2563790C006E4E0E /* MDSEditImgController.swift in Sources */,
 				536A338C2563790C006E4E0E /* MDSCutAreaView.swift in Sources */,
 				536A33882563790C006E4E0E /* MDSEditImgView.swift in Sources */,
+				53384EAA256B4F7E00833FC2 /* MDSAIModel.swift in Sources */,
 				536A337C2563790C006E4E0E /* MDSSlectTabController.swift in Sources */,
 				536A338E2563790C006E4E0E /* UIView+Tools.swift in Sources */,
 				536A339A2563790C006E4E0E /* MDSChatBaseCell.swift in Sources */,
@@ -1156,7 +1162,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/HandyJSON/HandyJSON.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Moya/Moya.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Result/Result.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.modulemap\" -DMDS";
 				PRODUCT_BUNDLE_IDENTIFIER = rainjsoft.com.JiGouBao;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "考拉云AI";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MDS/MDS_bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1183,7 +1189,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/HandyJSON/HandyJSON.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Moya/Moya.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Result/Result.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.modulemap\" -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.modulemap\" -DMDS";
 				PRODUCT_BUNDLE_IDENTIFIER = rainjsoft.com.JiGouBao;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "考拉云AI";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MDS/MDS_bridge.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
