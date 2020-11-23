@@ -14,22 +14,30 @@ let HomeProvider = MoyaProvider<MDSHomeAPI>(endpointClosure:myEndpointClosure,re
 
 enum MDSHomeAPI {
     case findHomeworkList(params:[String : Any])
+    case uploadImgString(params:[String : Any])
 }
 
 extension MDSHomeAPI:TargetType,MoyaAddable{
 
     var needShowHud: Bool {
-        return true
+        return false
     }
     
     var baseURL: URL {
-        return URL.init(string: MDS_BaseURL)!
+        switch self {
+        case .findHomeworkList:
+            return URL.init(string: MDS_BaseURL)!
+        case .uploadImgString:
+            return URL.init(string: "http://123.56.54.15")!
+        }
     }
     
     var path: String {
         switch self {
             case .findHomeworkList:
-                return "/homework-api/homework/process/findHomeworkList";
+                return "/homework-api/homework/process/findHomeworkList"
+        case .uploadImgString:
+            return "/kly-pro-smartapi/photo_marking_pro"
         }
     }
     
@@ -37,6 +45,8 @@ extension MDSHomeAPI:TargetType,MoyaAddable{
         switch self {
             case .findHomeworkList:
                 return .post
+        case .uploadImgString:
+            return .post
         }
     }
     
@@ -48,6 +58,8 @@ extension MDSHomeAPI:TargetType,MoyaAddable{
         switch self {
         case .findHomeworkList(params: let parmeters):
             return .requestParameters(parameters: parmeters, encoding: JSONEncoding.default);
+        case .uploadImgString(params: let params):
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default);
         }
     }
     

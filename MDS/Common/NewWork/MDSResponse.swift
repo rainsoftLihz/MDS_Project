@@ -14,15 +14,21 @@ class MDSResponse: HandyJSON {
     //总条数
     var total:Int = 0
     //状态码
-    var rtnCode:Int = 0
+    var rtnCode:Int {
+        return self.status
+    }
     //提示信息
     var rtnMsg:String?
+    var msg:String?
     // 数据
     var data:Any?
+    
+    //AI识别
+    var status:Int = 0
 
     var isSucces:Bool{
         get{
-            return self.rtnCode == 200
+            return  self.status == 0
         }
     }
     

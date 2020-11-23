@@ -31,6 +31,14 @@ extension UIView {
         SVProgressHUD.showInfo(withStatus: text)
     }
     
+    public class func showText(_ text:String){
+        SVProgressHUD.setDefaultStyle(.custom)
+        SVProgressHUD.setBackgroundColor(UIColorFromRGBAlpha(0x000000,0.3))
+        SVProgressHUD.setDefaultMaskType(.gradient)
+        SVProgressHUD.setForegroundColor(.white)
+        SVProgressHUD.showInfo(withStatus: text)
+    }
+    
     
 //MARK: ---Lab
     public class func createLab(color:UIColor,fontSize:CGFloat) -> UILabel {

@@ -14,22 +14,22 @@ let borderWidth:CGFloat = 0.8
 
 enum UIRectCornerType {
     case UIRectCornerTopLeft,
-         UIRectCornerTopRight,
-         UIRectCornerBottomLeft,
-         UIRectCornerBottomRight,
-         UIRectCornerAll
+    UIRectCornerTopRight,
+    UIRectCornerBottomLeft,
+    UIRectCornerBottomRight,
+    UIRectCornerAll
     func corner() -> UIRectCorner {
         switch self {
-            case .UIRectCornerTopRight:
-                return UIRectCorner.topRight
-            case .UIRectCornerTopLeft:
-                return UIRectCorner.topLeft
-            case .UIRectCornerBottomRight:
-                return UIRectCorner.bottomRight
-            case .UIRectCornerBottomLeft:
-                return UIRectCorner.bottomLeft
-            default:
-                return UIRectCorner.allCorners
+        case .UIRectCornerTopRight:
+            return UIRectCorner.topRight
+        case .UIRectCornerTopLeft:
+            return UIRectCorner.topLeft
+        case .UIRectCornerBottomRight:
+            return UIRectCorner.bottomRight
+        case .UIRectCornerBottomLeft:
+            return UIRectCorner.bottomLeft
+        default:
+            return UIRectCorner.allCorners
         }
     }
 }
@@ -60,17 +60,17 @@ extension UIView{
         self.tapBlock!()
     }
     
-//MARK: --- 计算文字宽度高度
-   static func calculateWidth(font: UIFont ,text : String) -> CGFloat {
+    //MARK: --- 计算文字宽度高度
+    static func calculateWidth(font: UIFont ,text : String) -> CGFloat {
         let constraintRect = CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT))
         let boundingBox = text.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
-         return boundingBox.width
+        return boundingBox.width
     }
     
     static func calculateHeight(font: UIFont ,text : String) -> CGFloat {
         let constraintRect = CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT))
         let boundingBox = text.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
-         return boundingBox.height
+        return boundingBox.height
     }
     
     static func calculateSize(font: UIFont ,text : String) -> CGSize {
@@ -78,8 +78,156 @@ extension UIView{
         let boundingBox = text.boundingRect(with: constraintRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         return boundingBox.size
     }
- 
-//MARK: - UIView转UIImage
+    
+    //MARK: --- UIImage压缩
+    
+    public class func compressImgTohMaxData(origin:UIImage,maxCount:Int) -> Data? {
+        
+        var compression:CGFloat = 1
+        
+        guard var data = origin.jpegData(compressionQuality: compression) else {
+            return nil
+        }
+        
+        if data.count <= maxCount {
+            return data
+        }
+        
+        var max:CGFloat = 1,min:CGFloat = 0.8//最小0.8
+        
+        for i in 0..<6 {//最多压缩6次
+            
+            compression = (max+min)/2
+            
+            if let tmpdata = origin.jpegData(compressionQuality: compression) {
+                
+                data = tmpdata
+                
+            } else {
+                
+                return nil
+                
+            }
+            
+            if data.count <= maxCount {
+                
+                return data
+                
+            } else {
+                
+                max = compression
+                
+            }
+            
+        }
+        
+        //压缩分辨率
+        guard var resultImage = UIImage(data: data) else { return nil }
+        
+        var lastDataCount:Int = 0
+        
+        while data.count > maxCount && data.count != lastDataCount {
+            
+            lastDataCount = data.count
+            
+            let ratio = CGFloat(maxCount)/CGFloat(data.count)
+            
+            let size = CGSize(width: resultImage.size.width*sqrt(ratio), height: resultImage.size.height*sqrt(ratio))
+            
+            UIGraphicsBeginImageContextWithOptions(CGSize(width: CGFloat(Int(size.width)), height: CGFloat(Int(size.height))), true, 1)//防止黑边
+            
+            resultImage.draw(in: CGRect(origin: .zero, size: size))//比转成Int清晰
+            
+            if let tmp = UIGraphicsGetImageFromCurrentImageContext() {
+                
+                resultImage = tmp
+                
+                UIGraphicsEndImageContext()
+                
+            } else {
+                
+                UIGraphicsEndImageContext()
+                
+                return nil
+            }
+            
+            if let tmpdata = resultImage.jpegData(compressionQuality: compression) {
+                
+                data = tmpdata
+                
+            } else {
+                
+                return nil
+                
+            }
+            
+        }
+        
+        return data
+    }
+    
+    func resizeAndCompressImageToData(image: UIImage, maxWidth: CGFloat, maxHeight: CGFloat, compressionQuality: CGFloat) -> Data? {
+        
+        let horizontalRatio = maxWidth / image.size.width
+        let verticalRatio = maxHeight / image.size.height
+        
+        
+        let ratio = min(horizontalRatio, verticalRatio)
+        
+        let newSize = CGSize(width: image.size.width * ratio, height: image.size.height * ratio)
+        var newImage: UIImage
+        
+        if #available(iOS 10.0, *) {
+            let renderFormat = UIGraphicsImageRendererFormat.default()
+            renderFormat.opaque = false
+            let renderer = UIGraphicsImageRenderer(size: CGSize(width: newSize.width, height: newSize.height), format: renderFormat)
+            newImage = renderer.image {
+                (context) in
+                image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+            }
+        } else {
+            UIGraphicsBeginImageContextWithOptions(CGSize(width: newSize.width, height: newSize.height), true, 0)
+            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+            newImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+        }
+        
+        let data = newImage.jpegData(compressionQuality: compressionQuality)
+        
+        
+        
+        return data
+        
+    }
+    
+    func resizeAndCompressToImage(image: UIImage, maxWidth: CGFloat, maxHeight: CGFloat, compressionQuality: CGFloat) -> UIImage? {
+        
+        let horizontalRatio = maxWidth / image.size.width
+        let verticalRatio = maxHeight / image.size.height
+        
+        let ratio = min(horizontalRatio, verticalRatio)
+        
+        let newSize = CGSize(width: image.size.width * ratio, height: image.size.height * ratio)
+        var newImage: UIImage
+        
+        if #available(iOS 10.0, *) {
+            let renderFormat = UIGraphicsImageRendererFormat.default()
+            renderFormat.opaque = false
+            let renderer = UIGraphicsImageRenderer(size: CGSize(width: newSize.width, height: newSize.height), format: renderFormat)
+            newImage = renderer.image {
+                (context) in
+                image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+            }
+        } else {
+            UIGraphicsBeginImageContextWithOptions(CGSize(width: newSize.width, height: newSize.height), true, 0)
+            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+            newImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+        }
+        return newImage
+    }
+    
+    //MARK: - UIView转UIImage
     static func getImageFromView(theView: UIView,rect: CGRect) ->UIImage?{
         UIGraphicsBeginImageContextWithOptions(theView.frame.size,false, UIScreen.main.scale);
         let context:CGContext = UIGraphicsGetCurrentContext()!
@@ -93,23 +241,23 @@ extension UIView{
         return theImage
     }
     
-//MARK: - UIView转UIImage
+    //MARK: - UIView转UIImage
     static func getImageFromView(view: UIView) -> UIImage? {
-    UIGraphicsBeginImageContextWithOptions(view.frame.size, false, UIScreen.main.scale)
-    view.layer.render(in: UIGraphicsGetCurrentContext()!)
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return image!
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, false, UIScreen.main.scale)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
     }
     
-//MARK: ----addSubView
+    //MARK: ----addSubView
     func addSubViews(_ views:[UIView])  {
         for item in views {
             self.addSubview(item)
         }
     }
     
-//MARK: ----cornerRadius
+    //MARK: ----cornerRadius
     func cornerRadius(cornerRadius:CGFloat) {
         self.layer.cornerRadius = cornerRadius
         self.layer.borderWidth = borderWidth
@@ -132,7 +280,7 @@ extension UIView{
         self.layer.borderColor = color.cgColor
     }
     
-//MARK: ----frame
+    //MARK: ----frame
     func myFrame(_ x:CGFloat,_ y:CGFloat,_ w:CGFloat,_ h:CGFloat) {
         self.frame = CGRect.init(x: x, y: y, width: w, height: h)
     }

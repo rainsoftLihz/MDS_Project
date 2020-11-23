@@ -10,7 +10,6 @@
 		40565B7089854AC319E3EBAA /* libPods-MDS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41362C0B7CD49EEA340EE2EE /* libPods-MDS.a */; };
 		536A3310256378F7006E4E0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A330F256378F7006E4E0E /* AppDelegate.swift */; };
 		536A3316256378FA006E4E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 536A3315256378FA006E4E0E /* Assets.xcassets */; };
-		536A331C256378FA006E4E0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 536A331A256378FA006E4E0E /* LaunchScreen.storyboard */; };
 		536A33662563790C006E4E0E /* MDSOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A33232563790C006E4E0E /* MDSOrderController.swift */; };
 		536A33672563790C006E4E0E /* MDSOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A33232563790C006E4E0E /* MDSOrderController.swift */; };
 		536A33682563790C006E4E0E /* MDSHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536A33262563790C006E4E0E /* MDSHomeController.swift */; };
@@ -112,6 +111,13 @@
 		53E4369725679CAD00CFEE07 /* MDSTestGestureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4369525679CAD00CFEE07 /* MDSTestGestureController.swift */; };
 		53E4369925679E7200CFEE07 /* MDSFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4369825679E7200CFEE07 /* MDSFooterController.swift */; };
 		53E4369A25679E7200CFEE07 /* MDSFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E4369825679E7200CFEE07 /* MDSFooterController.swift */; };
+		53E82DC92567F92200F71E4B /* MDSAIScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E82DC82567F92200F71E4B /* MDSAIScanController.swift */; };
+		53E82DCA2567F92200F71E4B /* MDSAIScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E82DC82567F92200F71E4B /* MDSAIScanController.swift */; };
+		53E82DCB25680D5A00F71E4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53F67BF52222BB56004330B5 /* LaunchScreen.storyboard */; };
+		53E82DCD2568118500F71E4B /* MDSGoToScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E82DCC2568118500F71E4B /* MDSGoToScanController.swift */; };
+		53E82DCE2568118500F71E4B /* MDSGoToScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E82DCC2568118500F71E4B /* MDSGoToScanController.swift */; };
+		53E82DD0256819DE00F71E4B /* MDSScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E82DCF256819DE00F71E4B /* MDSScanView.swift */; };
+		53E82DD1256819DE00F71E4B /* MDSScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E82DCF256819DE00F71E4B /* MDSScanView.swift */; };
 		53F67BED2222BB54004330B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F67BEC2222BB54004330B5 /* AppDelegate.swift */; };
 		53F67BF42222BB56004330B5 /* common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53F67BF32222BB56004330B5 /* common.xcassets */; };
 		53F67BF72222BB56004330B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53F67BF52222BB56004330B5 /* LaunchScreen.storyboard */; };
@@ -140,7 +146,6 @@
 		536A330D256378F7006E4E0E /* MDSTiMmuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDSTiMmuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		536A330F256378F7006E4E0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		536A3315256378FA006E4E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		536A331B256378FA006E4E0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		536A33232563790C006E4E0E /* MDSOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDSOrderController.swift; sourceTree = "<group>"; };
 		536A33262563790C006E4E0E /* MDSHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDSHomeController.swift; sourceTree = "<group>"; };
 		536A33282563790C006E4E0E /* MDSHomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDSHomeModel.swift; sourceTree = "<group>"; };
@@ -192,6 +197,9 @@
 		53E436922567692C00CFEE07 /* MDSStoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSStoreController.swift; sourceTree = "<group>"; };
 		53E4369525679CAD00CFEE07 /* MDSTestGestureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSTestGestureController.swift; sourceTree = "<group>"; };
 		53E4369825679E7200CFEE07 /* MDSFooterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSFooterController.swift; sourceTree = "<group>"; };
+		53E82DC82567F92200F71E4B /* MDSAIScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSAIScanController.swift; sourceTree = "<group>"; };
+		53E82DCC2568118500F71E4B /* MDSGoToScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSGoToScanController.swift; sourceTree = "<group>"; };
+		53E82DCF256819DE00F71E4B /* MDSScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSScanView.swift; sourceTree = "<group>"; };
 		53F67BE92222BB54004330B5 /* MDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F67BEC2222BB54004330B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53F67BF32222BB56004330B5 /* common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = common.xcassets; sourceTree = "<group>"; };
@@ -247,7 +255,6 @@
 				536A33C025637CDB006E4E0E /* Info.plist */,
 				536A330F256378F7006E4E0E /* AppDelegate.swift */,
 				536A3315256378FA006E4E0E /* Assets.xcassets */,
-				536A331A256378FA006E4E0E /* LaunchScreen.storyboard */,
 			);
 			path = MDSTiMmuy;
 			sourceTree = "<group>";
@@ -255,6 +262,7 @@
 		536A33212563790C006E4E0E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				53E82DC72567F8BC00F71E4B /* 拍照识别 */,
 				536A335F2563790C006E4E0E /* Business */,
 				536A33632563790C006E4E0E /* Mine */,
 				536A33222563790C006E4E0E /* Order */,
@@ -500,6 +508,16 @@
 			path = "画板";
 			sourceTree = "<group>";
 		};
+		53E82DC72567F8BC00F71E4B /* 拍照识别 */ = {
+			isa = PBXGroup;
+			children = (
+				53E82DC82567F92200F71E4B /* MDSAIScanController.swift */,
+				53E82DCC2568118500F71E4B /* MDSGoToScanController.swift */,
+				53E82DCF256819DE00F71E4B /* MDSScanView.swift */,
+			);
+			path = "拍照识别";
+			sourceTree = "<group>";
+		};
 		53F67BE02222BB53004330B5 = {
 			isa = PBXGroup;
 			children = (
@@ -686,9 +704,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				536A331C256378FA006E4E0E /* LaunchScreen.storyboard in Resources */,
 				536A3316256378FA006E4E0E /* Assets.xcassets in Resources */,
 				53DBCE622563A18800835832 /* common.xcassets in Resources */,
+				53E82DCB25680D5A00F71E4B /* LaunchScreen.storyboard in Resources */,
 				536A33C225638186006E4E0E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -822,6 +840,7 @@
 				536A33A32563790C006E4E0E /* MDSResponse.swift in Sources */,
 				536A33B52563790C006E4E0E /* MDSConst.swift in Sources */,
 				536A336B2563790C006E4E0E /* MDSHomeModel.swift in Sources */,
+				53E82DCA2567F92200F71E4B /* MDSAIScanController.swift in Sources */,
 				536A33852563790C006E4E0E /* MDSBrowsePhotoController.swift in Sources */,
 				536A336D2563790C006E4E0E /* MDSHomeViewCell.swift in Sources */,
 				536A337D2563790C006E4E0E /* MDSSlectTabController.swift in Sources */,
@@ -837,6 +856,7 @@
 				536A338B2563790C006E4E0E /* MDSEditImgController.swift in Sources */,
 				536A33712563790C006E4E0E /* MDSCardBaseCell.swift in Sources */,
 				536A33BB2563790C006E4E0E /* MDSBussinessController.swift in Sources */,
+				53E82DD1256819DE00F71E4B /* MDSScanView.swift in Sources */,
 				536A33932563790C006E4E0E /* UIView+Factory.swift in Sources */,
 				53E4369125675C5F00CFEE07 /* MDSStorkeView.swift in Sources */,
 				536A33AF2563790C006E4E0E /* MDSTabBarController.swift in Sources */,
@@ -848,6 +868,7 @@
 				536A33732563790C006E4E0E /* MDSCardView.swift in Sources */,
 				536A339F2563790C006E4E0E /* MDSChatMineCell.swift in Sources */,
 				536A33B12563790C006E4E0E /* MDSNavController.swift in Sources */,
+				53E82DCE2568118500F71E4B /* MDSGoToScanController.swift in Sources */,
 				536A33752563790C006E4E0E /* MDSCustomLayout.swift in Sources */,
 				536A33952563790C006E4E0E /* UIViewController+Ext.swift in Sources */,
 				53E4369725679CAD00CFEE07 /* MDSTestGestureController.swift in Sources */,
@@ -879,6 +900,7 @@
 				536A33A82563790C006E4E0E /* MDSLoginAPI.swift in Sources */,
 				536A33802563790C006E4E0E /* MDSPickImgController.swift in Sources */,
 				536A33AC2563790C006E4E0E /* MDSBaseController.swift in Sources */,
+				53E82DC92567F92200F71E4B /* MDSAIScanController.swift in Sources */,
 				536A33722563790C006E4E0E /* MDSCardView.swift in Sources */,
 				536A33AE2563790C006E4E0E /* MDSTabBarController.swift in Sources */,
 				536A33B62563790C006E4E0E /* MDSTextCardController.swift in Sources */,
@@ -894,6 +916,7 @@
 				536A339A2563790C006E4E0E /* MDSChatBaseCell.swift in Sources */,
 				536A33662563790C006E4E0E /* MDSOrderController.swift in Sources */,
 				536A336A2563790C006E4E0E /* MDSHomeModel.swift in Sources */,
+				53E82DD0256819DE00F71E4B /* MDSScanView.swift in Sources */,
 				536A33A02563790C006E4E0E /* MDSRequestConfig.swift in Sources */,
 				53E4369025675C5900CFEE07 /* MDSStorkeView.swift in Sources */,
 				536A33922563790C006E4E0E /* UIView+Factory.swift in Sources */,
@@ -905,6 +928,7 @@
 				536A33902563790C006E4E0E /* ScrollView+MJ.swift in Sources */,
 				536A33BC2563790C006E4E0E /* MDSLoginVC.swift in Sources */,
 				536A33862563790C006E4E0E /* MDSCutGridLayer.swift in Sources */,
+				53E82DCD2568118500F71E4B /* MDSGoToScanController.swift in Sources */,
 				536A33BA2563790C006E4E0E /* MDSBussinessController.swift in Sources */,
 				536A33A22563790C006E4E0E /* MDSResponse.swift in Sources */,
 				53E4369625679CAD00CFEE07 /* MDSTestGestureController.swift in Sources */,
@@ -941,14 +965,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		536A331A256378FA006E4E0E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				536A331B256378FA006E4E0E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		53F67BF52222BB56004330B5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1128,12 +1144,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C33F3F46E85E394E49FE28D /* Pods-MDS.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = MDSAppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = MDSLaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MNPPQD39ZB;
 				INFOPLIST_FILE = MDS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1155,12 +1171,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA151FFEAAD8170E5300D81C /* Pods-MDS.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = MDSAppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = MDSLaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MNPPQD39ZB;
 				INFOPLIST_FILE = MDS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

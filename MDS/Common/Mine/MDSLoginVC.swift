@@ -156,7 +156,7 @@ class MDSLoginVC: MDSBaseController {
                  let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
                  appDelegate.gotoHome()
              }else{
-                 UIView.showTipsText(response.rtnMsg!)
+                 UIView.showTipsText(response.msg!)
             }
         }
     }

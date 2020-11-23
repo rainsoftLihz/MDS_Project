@@ -7,6 +7,7 @@
 //
 
 import Foundation
+@available(iOS 11.0, *)
 class MDSTestGestureController:
     MDSBaseController,
     UIScrollViewDelegate,
@@ -71,12 +72,9 @@ UITableViewDataSource,ScrollActionDelegate {
             self.tableView.isScrollEnabled = true
             self.footerVC.canScroll = false
         }
-        
-        print("scrollView.contentOffset.y=\(offsetY)")
     }
     
     func scrollViewDidScrollTo(offsetY: CGFloat) {
-        print("footerscrollView.contentOffset.y=\(offsetY)")
         if offsetY > 0{
             self.tableView.isScrollEnabled = false
             self.footerVC.canScroll = true

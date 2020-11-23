@@ -87,8 +87,8 @@ extension MoyaProvider{
                         completion(resultData)
                     } catch {
                         let resultData:MDSResponse = MDSResponse.init()
-                        resultData.rtnCode = response.statusCode
-                        resultData.rtnMsg = "网络请求异常"
+                        resultData.status = response.statusCode
+                        resultData.msg = "网络请求异常"
                         completion(resultData)
                         if target.needShowHud {
                             UIView.showTipsText("网络请求异常")
@@ -96,8 +96,8 @@ extension MoyaProvider{
                     }
                 case let .failure(error):
                     let resultData:MDSResponse = MDSResponse.init()
-                    resultData.rtnCode = error.errorCode
-                    resultData.rtnMsg = "网络连接失败"
+                    resultData.status = error.errorCode
+                    resultData.msg = "网络连接失败"
                     completion(resultData)
                     
                     if target.needShowHud {
