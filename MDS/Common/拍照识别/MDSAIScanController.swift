@@ -91,12 +91,14 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
         }
     }
     
+    //MARK: ---- 拍照后发送数据
     func sendData(_ pic:UIImage) {
         //请求数据
         let imgData = UIView.compressImgTohMaxData(origin: pic, maxCount: 2*1024*1024)
         let base64 = imgData!.base64EncodedString(options: .endLineWithCarriageReturn)
         let params:[String:Any] = ["data":base64]
-        //UIImageWriteToSavedPhotosAlbum(pic, self, #selector(self!.image(image:didFinishSavingWithError:contextInfo:)), nil)
+        //保存图片方便调试
+        UIImageWriteToSavedPhotosAlbum(pic, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
         HomeProvider.requsetData(MDSHomeAPI.uploadImgString(params: params)) { (response) -> (Void) in
             
             self.stopAnimation()
@@ -124,9 +126,16 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
                             
                             let studentlab:UILabel = UIView.createLab(text:"作答:"+(info?.answer)!, color: .blue, fontSize: 13)
                             studentlab.font = kBloldFont(16)
-                            self.imgV.addSubview(studentlab)
-                            if info!.mark!.count > 0{
+                            
+                            var imgV:UIImageView?
+                            if info!.label != 2 {
+                                let imgStr = info?.label == 0 ? "cuo":"dui"
+                                imgV = UIImageView.init(image: kImage(imgStr as NSString))
+                                self.imgV.addSubview(imgV!)
+                            }
+                            if info!.mark!.count == 0{
                                 self.imgV.addSubview(lab)
+                                self.imgV.addSubview(studentlab)
                                 lab.snp.makeConstraints { (make) in
                                     make.left.equalTo(framX)
                                     make.top.equalTo(framY)
@@ -136,21 +145,21 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
                                     make.top.equalTo(framY)
                                 }
                                 
-                            }else {
-                                studentlab.snp.makeConstraints { (make) in
-                                    make.left.equalTo(framX)
-                                    make.top.equalTo(framY)
+                                if info!.label != 2 {
+                                    imgV!.snp.makeConstraints { (make) in
+                                        make.left.equalTo(studentlab.snp_right).offset(20)
+                                        make.centerY.equalTo(studentlab)
+                                        make.size.equalTo(CGSize.init(width: 28, height: 28))
+                                    }
                                 }
-                            }
-                            
-                            if info!.label != 2 {
-                                let imgStr = info?.label == 0 ? "cuo":"dui"
-                                let imgV:UIImageView = UIImageView.init(image: kImage(imgStr as NSString))
-                                self.imgV.addSubview(imgV)
-                                imgV.snp.makeConstraints { (make) in
-                                    make.left.equalTo(studentlab.snp_right).offset(20)
-                                    make.centerY.equalTo(studentlab)
-                                    make.size.equalTo(CGSize.init(width: 28, height: 28))
+                                
+                            }else {
+                                if info!.label != 2 {
+                                    imgV!.snp.makeConstraints { (make) in
+                                        make.left.equalTo(framX)
+                                        make.top.equalTo(framY)
+                                        make.size.equalTo(CGSize.init(width: 28, height: 28))
+                                    }
                                 }
                             }
                         }
@@ -174,7 +183,7 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
     }
 
     
-    //扫描动画
+    //MARK: ---- 扫描动画
     func startAnimation() {
         self.imgV.layer.addSublayer(self.gradientLayer)
         let gradientAnimation: CABasicAnimation = CABasicAnimation()
@@ -198,7 +207,7 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
         self.dismiss(animated: false, completion: nil)
     }
     
-    //拍照
+    //MARK: ----拍照
     @objc func startCamera(){
         self.scanView.startCamera()
     }
