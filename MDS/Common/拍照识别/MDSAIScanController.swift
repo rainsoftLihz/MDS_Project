@@ -75,6 +75,7 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .black
         self.myNavView.isHidden = true
         self.view.addSubview(self.imgV)
         self.imgV.myFrame(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-toolBarH)
@@ -114,10 +115,10 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
                         if let box = item?.box {
                             //获取坐标
                             let framX:CGFloat = CGFloat(box[0])*SCREEN_WIDTH/size.width
-                            var framY:CGFloat = CGFloat(box[1])*self.imgV.height/size.height+15
-                            if framY>self.imgV.height-15{
-                                framY = self.imgV.height-15
-                            }
+                            let framY:CGFloat = CGFloat(box[1])*self.imgV.height/size.height
+//                            if framY>self.imgV.height-15{
+//                                framY = self.imgV.height-15
+//                            }
                             
                             let info = item?.info
                             
@@ -165,6 +166,17 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
                         }
                         
                     }
+                    
+                    
+                    //缩放手势
+                    let pinchGesture:UIPinchGestureRecognizer = UIPinchGestureRecognizer.init(target: self, action: #selector(self.pinchView(pinchGestureRecognizer:)))
+                    self.imgV.addGestureRecognizer(pinchGesture)
+
+                    //拖拽手势
+                    let dragGesture:UIPanGestureRecognizer = UIPanGestureRecognizer.init(target: self, action: #selector(self.dragView(dragGesture:)))
+                    self.imgV.addGestureRecognizer(dragGesture)
+                    self.imgV.isUserInteractionEnabled = true
+                    
                 }
             }else if response.status == 1{
                 UIView.showText(response.msg ?? "请求失败")
@@ -172,6 +184,30 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
                 UIView.showText("请求失败")
             }
         }
+    }
+    
+    //MARK: ---缩放
+    @objc func pinchView(pinchGestureRecognizer:UIPinchGestureRecognizer) -> (){
+        let view = pinchGestureRecognizer.view
+        if pinchGestureRecognizer.state == .began || pinchGestureRecognizer.state == .changed {
+            view?.transform = view!.transform.scaledBy(x: pinchGestureRecognizer.scale, y: pinchGestureRecognizer.scale);
+            
+            pinchGestureRecognizer.scale = 1;
+        }
+    }
+    
+    @objc func dragView(dragGesture:UIPanGestureRecognizer){
+        let view = dragGesture.view
+        //现对于起始点的移动位置
+        let Point = dragGesture.translation(in: self.view)
+        var rect = view!.frame
+        var viewRect = rect.origin
+        viewRect.x += Point.x;
+        viewRect.y += Point.y;
+        rect.origin = viewRect
+        self.imgV.frame = rect
+        //初始化translation
+        dragGesture.setTranslation(CGPoint.init(x: 0, y: 0), in: view)
     }
     
     
