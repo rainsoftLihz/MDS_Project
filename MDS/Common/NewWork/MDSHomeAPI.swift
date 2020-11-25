@@ -17,6 +17,8 @@ enum MDSHomeAPI {
     case uploadImgString(params:[String : Any])
 }
 
+let APP_Production:Int = 1
+
 extension MDSHomeAPI:TargetType,MoyaAddable{
 
     var needShowHud: Bool {
@@ -28,8 +30,10 @@ extension MDSHomeAPI:TargetType,MoyaAddable{
         case .findHomeworkList:
             return URL.init(string: MDS_BaseURL)!
         case .uploadImgString:
-            return URL.init(string: "http://123.56.54.15:80")!
-                //URL.init(string: "http://10.10.48.110:8000")!
+            if APP_Production == 1 {
+                return URL.init(string: "http://123.56.54.15:80")!
+            }
+            return URL.init(string: "http://10.10.48.110:8000")!
         }
     }
     
