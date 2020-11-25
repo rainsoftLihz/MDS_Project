@@ -27,12 +27,11 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
     private var renderBuffer: GLuint = GLuint()
     private var glkView: GLKView!
     private var isStopped: Bool = false
-    private var imageDedectionConfidence: Float!
-    private var borderDetectTimeKeeper: Timer!
+    private var timer: Timer!
     private var borderDetectFrame: Bool = false
     //最大的检测矩型方框
     private var borderDetectLastRectangleFeature: CIRectangleFeature!
-    private var isCapturing: Bool = false
+
     //边缘识别遮盖
     private var rectOverlay: CAShapeLayer!
     //负责输入和输出设备之间的数据传递
@@ -81,8 +80,8 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
         NotificationCenter.default.removeObserver(self)
         self.motionManager.stopDeviceMotionUpdates()
         self.motionManager.stopGyroUpdates()
-        if self.borderDetectTimeKeeper != nil {
-            self.borderDetectTimeKeeper.invalidate()
+        if self.timer != nil {
+            self.timer.invalidate()
         }
         print("dinit ---- \(self)")
     }
@@ -101,12 +100,12 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
         self.enableBorderDetection = true
         self.captureSession.startRunning()
         
-        if self.borderDetectTimeKeeper != nil {
-            self.borderDetectTimeKeeper.invalidate()
+        if self.timer != nil {
+            self.timer.invalidate()
         }
         // 每隔0.85监测
-        self.borderDetectTimeKeeper = Timer.scheduledTimer(timeInterval: 0.65, target: self, selector: #selector(enableBorderDetectFrame), userInfo: nil, repeats: true)
-        self.borderDetectTimeKeeper.fire()
+        self.timer = Timer.scheduledTimer(timeInterval: 0.65, target: self, selector: #selector(enableBorderDetectFrame), userInfo: nil, repeats: true)
+        self.timer.fire()
         self.hideGLKView(hidden: false, completion: nil)
     }
     
@@ -115,13 +114,15 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
         self.isStopped = true
         self.captureSession.stopRunning()
         self.hideGLKView(hidden: true, completion: nil)
-        self.isCapturing = false
         if (self.rectOverlay != nil) {
             // 移除识别边框
             self.rectOverlay.path = nil
         }
         self.motionManager.stopDeviceMotionUpdates()
         self.motionManager.stopGyroUpdates()
+        if self.timer != nil {
+            self.timer.invalidate()
+        }
     }
     
     //MARK: --- 开启边缘识别
@@ -180,13 +181,10 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
         let device = AVCaptureDevice.default(for: .video)
         if (device == nil) { return }
         
-        self.imageDedectionConfidence = 0.0;
-        
         let session =  AVCaptureSession()
         self.captureSession = session;
         session.beginConfiguration()
         self.captureDevice = device;
-        
         do {
             let input = try AVCaptureDeviceInput(device: device!)
             session.sessionPreset = .photo
@@ -223,7 +221,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
     
     //MARK: --- AVCaptureVideoDataOutputSampleBufferDelegate
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        if (forceStop || isStopped || isCapturing || !CMSampleBufferIsValid(sampleBuffer)) {
+        if (forceStop || isStopped || !CMSampleBufferIsValid(sampleBuffer)) {
             return
         }
         
@@ -241,14 +239,9 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
             }
             
             if (borderDetectLastRectangleFeature != nil) {
-                imageDedectionConfidence += 0.5;
-                // draw border layer
-                if (rectangleDetectionConfidenceHighEnough(confidence: imageDedectionConfidence)){
-                    drawBorderDetectRectWithImageRect(imageRect:image.extent, topLeft: borderDetectLastRectangleFeature.topLeft, topRight: borderDetectLastRectangleFeature.topRight, bottomLeft: borderDetectLastRectangleFeature.bottomLeft, bottomRight: borderDetectLastRectangleFeature.bottomRight)
-                }
+                drawBorderDetectRectWithImageRect(imageRect:image.extent, topLeft: borderDetectLastRectangleFeature.topLeft, topRight: borderDetectLastRectangleFeature.topRight, bottomLeft: borderDetectLastRectangleFeature.bottomLeft, bottomRight: borderDetectLastRectangleFeature.bottomRight)
                 
             }else {
-                imageDedectionConfidence = 0.0
                 if (rectOverlay != nil) {
                     rectOverlay.path = nil;
                 }
@@ -265,8 +258,6 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
     
     //MARK: --- 拍照动作
     func startCamera(){
-        if (self.isCapturing) { return }
-        self.isCapturing = false
         if #available(iOS 10.0, *) {
             var photoSetting : AVCapturePhotoSettings?
             if #available(iOS 11.0, *) {
@@ -295,24 +286,24 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
             if (self.enableBorderDetection) {
                 var enhancedImage: CIImage = CIImage(data: imageData!)!
                 // 判断边缘识别度阈值, 再对拍照后的进行边缘识别
-                var rectangleFeature: CIRectangleFeature!
-                if (self.rectangleDetectionConfidenceHighEnough(confidence: self.imageDedectionConfidence))  {
-                    // 获取边缘识别最大矩形
-                    rectangleFeature = self.biggestRectangleInRectangles(rectangles: (self.highAccuracyRectangleDetector!.features(in: enhancedImage)) as! [CIRectangleFeature])!
-                    
-                    if (rectangleFeature != nil) {
-                        enhancedImage = self.correctPerspectiveForImage(image: enhancedImage, rectangleFeature: rectangleFeature)
-                    }
+                let rectangleFeature =  self.biggestRectangleInRectangles(rectangles: (self.highAccuracyRectangleDetector!.features(in: enhancedImage)))
+                
+                if (rectangleFeature != nil) {
+                    enhancedImage = self.correctPerspectiveForImage(image: enhancedImage, rectangleFeature: rectangleFeature!)
                 }
                 
-                // 获取拍照图片
-                UIGraphicsBeginImageContext(CGSize(width:enhancedImage.extent.size.height,height: enhancedImage.extent.size.width));
-                UIImage(ciImage: enhancedImage, scale: 1.0, orientation: .right).draw(in: CGRect(x:0, y:0, width: enhancedImage.extent.size.height, height: enhancedImage.extent.size.width))
-                
-                let image = UIGraphicsGetImageFromCurrentImageContext();
-                UIGraphicsEndImageContext();
-                self.stop()
-                self.completionHandler!(image!)
+                // 获取拍照图片 --- 必须异步操作 否则内存不释放
+                DispatchQueue.global(qos: .default).async {
+                    UIGraphicsBeginImageContext(CGSize(width:enhancedImage.extent.size.height,height: enhancedImage.extent.size.width));
+                    UIImage(ciImage: enhancedImage, scale: 1.0, orientation: .right).draw(in: CGRect(x:0, y:0, width: enhancedImage.extent.size.height, height: enhancedImage.extent.size.width))
+                    
+                    let image = UIGraphicsGetImageFromCurrentImageContext()
+                    UIGraphicsEndImageContext()
+                    DispatchQueue.main.async {
+                        self.stop()
+                        self.completionHandler!(image!)
+                    }
+                }
             }else {
                 self.stop()
                 //未开启边缘识别，直接返回图片
@@ -401,11 +392,6 @@ extension MDSScanView{
         let previewRect = self.frame;
         return MADCGTransfromHelper.transfromRealCIRectInPreviewRect(previewRect, imageRect, topLeft, topRight, bottomLeft, bottomRight)
     }
-    
-    func rectangleDetectionConfidenceHighEnough(confidence: Float) -> Bool {
-        return (confidence > 1.0)
-    }
-    
 }
 
 struct CIFeatureRect {
