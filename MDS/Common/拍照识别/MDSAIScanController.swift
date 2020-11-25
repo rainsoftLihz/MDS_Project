@@ -82,11 +82,12 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
         self.imgV.contentMode = .scaleAspectFill
         self.view.addSubview(self.toolBar)
         self.view.addSubview(self.scanView)
-        self.scanView.complete = {[weak self](img)in
+        self.scanView.start()
+        self.scanView.completionHandler = {[weak self](img)in
             if let pic = img{
                 self?.imgV.image = pic
-                self?.startAnimation()
                 self?.scanView.isHidden = true
+                self?.startAnimation()
                 self?.sendData(pic)
             }
         }
@@ -239,6 +240,7 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
     }
 
     @objc func cancelBtnClick(){
+        self.scanView.stop()
         self.stopAnimation()
         self.dismiss(animated: false, completion: nil)
     }

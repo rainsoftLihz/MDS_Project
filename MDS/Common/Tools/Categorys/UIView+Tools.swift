@@ -95,7 +95,7 @@ extension UIView{
         
         var max:CGFloat = 1,min:CGFloat = 0.8//最小0.8
         
-        for i in 0..<6 {//最多压缩6次
+        for _ in 0..<6 {//最多压缩6次
             
             compression = (max+min)/2
             
