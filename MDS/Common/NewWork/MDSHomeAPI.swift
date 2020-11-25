@@ -17,7 +17,7 @@ enum MDSHomeAPI {
     case uploadImgString(params:[String : Any])
 }
 
-let APP_Production:Int = 1
+let APP_Production:Int = 0
 
 extension MDSHomeAPI:TargetType,MoyaAddable{
 
