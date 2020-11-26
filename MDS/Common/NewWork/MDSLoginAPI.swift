@@ -16,7 +16,15 @@ enum MDSLoginAPI {
     case login(params:[String : Any])
 }
 
-extension MDSLoginAPI:TargetType,MoyaAddable{
+extension MDSLoginAPI:TargetType,MoyaAddable,Cancellable{
+    var isCancelled: Bool {
+        return false
+    }
+    
+    func cancel() {
+        
+    }
+    
     
     var needShowHud:Bool{
         return true

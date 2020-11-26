@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 import HandyJSON
 //超时时长
-private var requestTimeOut:Double = 60;
+private var requestTimeOut:Double = 45;
 //成功数据回调
 typealias CompletBlock = ((MDSResponse) ->(Void));
 
@@ -70,14 +70,14 @@ protocol MoyaAddable {
 
 //MARK: --- 统一请求数据处理
 extension MoyaProvider{
-    func requsetData<R: TargetType & MoyaAddable>(_ target: R, completion: @escaping CompletBlock) {
+    func requsetData<R: TargetType & MoyaAddable >(_ target: R, completion: @escaping CompletBlock) -> Cancellable{
         
         if target.needShowHud {
             UIView.dismissHud()
             UIView.showHud()
         }
 
-        self.request(target as! Target) { (result) in
+        return self.request(target as! Target) { (result) in
             UIView.dismissHud()
             switch result {
                 case let .success(response):

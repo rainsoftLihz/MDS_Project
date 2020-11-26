@@ -78,12 +78,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-        self.motionManager.stopDeviceMotionUpdates()
-        self.motionManager.stopGyroUpdates()
-        if self.timer != nil {
-            self.timer.invalidate()
-        }
-        print("dinit ---- \(self)")
+        print("Scan释放了+++++++++++++")
     }
     
     @objc private func backgroundMode() {
@@ -104,7 +99,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
             self.timer.invalidate()
         }
         // 每隔0.85监测
-        self.timer = Timer.scheduledTimer(timeInterval: 0.65, target: self, selector: #selector(enableBorderDetectFrame), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 0.85, target: self, selector: #selector(enableBorderDetectFrame), userInfo: nil, repeats: true)
         self.timer.fire()
         self.hideGLKView(hidden: false, completion: nil)
     }
@@ -290,20 +285,25 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
                 
                 if (rectangleFeature != nil) {
                     enhancedImage = self.correctPerspectiveForImage(image: enhancedImage, rectangleFeature: rectangleFeature!)
+                    // 获取拍照图片 --- 必须异步操作 否则内存不释放
+                    DispatchQueue.global(qos: .default).async {
+                        UIGraphicsBeginImageContext(CGSize(width:enhancedImage.extent.size.height,height: enhancedImage.extent.size.width));
+                        UIImage(ciImage: enhancedImage, scale: 1.0, orientation: .right).draw(in: CGRect(x:0, y:0, width: enhancedImage.extent.size.height, height: enhancedImage.extent.size.width))
+                        
+                        let image = UIGraphicsGetImageFromCurrentImageContext()
+                        UIGraphicsEndImageContext()
+                        DispatchQueue.main.async {
+                            self.stop()
+                            self.completionHandler!(image!)
+                        }
+                    }
+                }else {
+                    self.stop()
+                    //未开启边缘识别，直接返回图片
+                    self.completionHandler!(UIImage(data: imageData!)!)
                 }
                 
-                // 获取拍照图片 --- 必须异步操作 否则内存不释放
-                DispatchQueue.global(qos: .default).async {
-                    UIGraphicsBeginImageContext(CGSize(width:enhancedImage.extent.size.height,height: enhancedImage.extent.size.width));
-                    UIImage(ciImage: enhancedImage, scale: 1.0, orientation: .right).draw(in: CGRect(x:0, y:0, width: enhancedImage.extent.size.height, height: enhancedImage.extent.size.width))
-                    
-                    let image = UIGraphicsGetImageFromCurrentImageContext()
-                    UIGraphicsEndImageContext()
-                    DispatchQueue.main.async {
-                        self.stop()
-                        self.completionHandler!(image!)
-                    }
-                }
+                
             }else {
                 self.stop()
                 //未开启边缘识别，直接返回图片

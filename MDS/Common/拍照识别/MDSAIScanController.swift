@@ -11,10 +11,10 @@ import UIKit
 import AVFoundation
 import CoreMotion
 import HandyJSON
+import Moya
 class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
-    
+    var request:Cancellable?
     var imgV:UIImageView = UIImageView.init()
-    
     //渐变层 --- 扫描动画
     let duration:CGFloat = 3.0
     lazy var gradientLayer: CAGradientLayer = {
@@ -100,8 +100,8 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
         let base64 = imgData!.base64EncodedString(options: .endLineWithCarriageReturn)
         let params:[String:Any] = ["data":base64]
         //保存图片方便调试
-        UIImageWriteToSavedPhotosAlbum(pic, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
-        HomeProvider.requsetData(MDSHomeAPI.uploadImgString(params: params)) { (response) -> (Void) in
+        //UIImageWriteToSavedPhotosAlbum(pic, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
+        self.request = HomeProvider.requsetData(MDSHomeAPI.uploadImgString(params: params)) { (response) -> (Void) in
             
             self.stopAnimation()
             if response.isSucces {
@@ -180,11 +180,12 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
                     
                 }
             }else if response.status == 1{
-                UIView.showText(response.msg ?? "请求失败")
+                //UIView.showText(response.msg ?? "请求失败")
             }else{
-                UIView.showText("请求失败")
+                //UIView.showText("请求失败")
             }
-        }
+            }
+        
     }
     
     //MARK: ---缩放
@@ -242,7 +243,8 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
     @objc func cancelBtnClick(){
         self.scanView.stop()
         self.stopAnimation()
-        self.dismiss(animated: false, completion: nil)
+        self.request?.cancel()
+        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: ----拍照

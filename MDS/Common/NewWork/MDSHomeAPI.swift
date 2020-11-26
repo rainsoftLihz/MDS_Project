@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 //网络请求的核心初始化方法  创建网络请求对象
-let HomeProvider = MoyaProvider<MDSHomeAPI>(endpointClosure:myEndpointClosure,requestClosure:myRequestClosure,plugins:[],trackInflights: false);
+let HomeProvider = MoyaProvider<MDSHomeAPI>(endpointClosure:myEndpointClosure,requestClosure:myRequestClosure,plugins:[],trackInflights: false)
 
 enum MDSHomeAPI {
     case findHomeworkList(params:[String : Any])
