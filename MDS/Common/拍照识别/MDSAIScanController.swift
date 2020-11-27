@@ -30,6 +30,7 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
     }()
   
     let toolBarH = 64+SAFE_AREA_Height
+    var takePhotoBtn:UIButton?
     //工具栏
     lazy var toolBar:UIView = {
         let temp = UIView.createView(backgroundColor: .black)
@@ -38,6 +39,7 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
         takePhotoBtn.setBackgroundImage(kImage("camera"), for: .normal)
         takePhotoBtn.backgroundColor = .clear
         temp.addSubview(takePhotoBtn)
+        self.takePhotoBtn = takePhotoBtn
         takePhotoBtn.addTarget(self, action: #selector(startCamera), for: .touchUpInside)
         takePhotoBtn.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize.init(width: 60, height: 60))
@@ -79,7 +81,7 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
         self.myNavView.isHidden = true
         self.view.addSubview(self.imgV)
         self.imgV.myFrame(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-toolBarH)
-        self.imgV.contentMode = .scaleAspectFill
+        self.imgV.contentMode = .scaleToFill
         self.view.addSubview(self.toolBar)
         self.view.addSubview(self.scanView)
         self.scanView.start()

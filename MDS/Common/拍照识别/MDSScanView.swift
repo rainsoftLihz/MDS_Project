@@ -19,7 +19,7 @@ import CoreGraphics
 typealias CompletionHandler = (_ image: UIImage?)->()
 
 class MDSScanView: UIView,
-AVCapturePhotoCaptureDelegate,
+    AVCapturePhotoCaptureDelegate,
 AVCaptureVideoDataOutputSampleBufferDelegate {
     /// 开启边缘检测
     var enableBorderDetection: Bool = false
@@ -27,11 +27,13 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
     private var renderBuffer: GLuint = GLuint()
     private var glkView: GLKView!
     private var isStopped: Bool = false
+    //控制检测频率
     private var timer: Timer!
     private var borderDetectFrame: Bool = false
+    
     //最大的检测矩型方框
     private var borderDetectLastRectangleFeature: CIRectangleFeature!
-
+    
     //边缘识别遮盖
     private var rectOverlay: CAShapeLayer!
     //负责输入和输出设备之间的数据传递
@@ -41,7 +43,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
     private var context: EAGLContext!
     //照片输出流
     private var captureOutput: AVCapturePhotoOutput!
-    private var forceStop: Bool = false
+    
     // 高精度边缘识别器
     private let highAccuracyRectangleDetector = CIDetector(ofType: CIDetectorTypeRectangle, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
     
@@ -61,11 +63,11 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
         self.initCameraView()
         self.checkMotion()
         /*
-        self.addSubview(self.centerLab)
-        self.centerLab.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-        }
-        */
+         self.addSubview(self.centerLab)
+         self.centerLab.snp.makeConstraints { (make) in
+         make.center.equalToSuperview()
+         }
+         */
         // 注册进入后台通知
         NotificationCenter.default.addObserver(self, selector: #selector(backgroundMode), name: UIApplication.willResignActiveNotification, object: nil)
         // 注册进入前台通知
@@ -82,11 +84,11 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
     @objc private func backgroundMode() {
-        self.forceStop = true
+        self.isStopped = true
     }
     
     @objc private func foregroundMode() {
-        self.forceStop = false
+        self.isStopped = false
     }
     
     //MARK: --- 开始捕获图像
@@ -99,7 +101,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
             self.timer.invalidate()
         }
         // 每隔0.85监测
-        self.timer = Timer.scheduledTimer(timeInterval: 0.85, target: self, selector: #selector(enableBorderDetectFrame), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(enableBorderDetectFrame), userInfo: nil, repeats: true)
         self.timer.fire()
         self.hideGLKView(hidden: false, completion: nil)
     }
@@ -188,7 +190,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
             let dataOutput =  AVCaptureVideoDataOutput()
             dataOutput.alwaysDiscardsLateVideoFrames = true
             dataOutput.videoSettings = [String(kCVPixelBufferPixelFormatTypeKey): kCVPixelFormatType_32BGRA]
-            dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
+            dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global(qos: .default))
             session.addOutput(dataOutput)
             
             self.captureOutput =  AVCapturePhotoOutput()
@@ -216,39 +218,42 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
     
     //MARK: --- AVCaptureVideoDataOutputSampleBufferDelegate
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        if (forceStop || isStopped || !CMSampleBufferIsValid(sampleBuffer)) {
+        if (isStopped || !CMSampleBufferIsValid(sampleBuffer)) {
             return
         }
         
         let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
         let image = CIImage(cvPixelBuffer: pixelBuffer)
-        //开启了边缘检测
-        if (enableBorderDetection) {
-            //开启了边缘识别
-            if (borderDetectFrame) {
-                // 用高精度边缘识别器 识别特征
-                let features: [CIFeature] = (highAccuracyRectangleDetector?.features(in: image))!
-                // 选取特征列表中最大的矩形
-                borderDetectLastRectangleFeature = biggestRectangleInRectangles(rectangles: features)
-                borderDetectFrame = false
+        
+        DispatchQueue.main.async {
+            
+            //开启了边缘检测
+            if (self.enableBorderDetection) {
+                //开启了边缘识别
+                if (self.borderDetectFrame) {
+                    // 选取特征列表中最大的矩形
+                    self.borderDetectLastRectangleFeature = self.getBiggestRectangleFeature(img: image)
+                    self.borderDetectFrame = false
+                }
+                
+                if (self.borderDetectLastRectangleFeature != nil) {
+                    self.drawBorderDetectRectWithImageRect(imageRect:image.extent, topLeft: self.borderDetectLastRectangleFeature.topLeft, topRight: self.borderDetectLastRectangleFeature.topRight, bottomLeft: self.borderDetectLastRectangleFeature.bottomLeft, bottomRight: self.borderDetectLastRectangleFeature.bottomRight)
+                    
+                }else {
+                    if (self.rectOverlay != nil) {
+                        self.rectOverlay.path = nil;
+                    }
+                }
             }
             
-            if (borderDetectLastRectangleFeature != nil) {
-                drawBorderDetectRectWithImageRect(imageRect:image.extent, topLeft: borderDetectLastRectangleFeature.topLeft, topRight: borderDetectLastRectangleFeature.topRight, bottomLeft: borderDetectLastRectangleFeature.bottomLeft, bottomRight: borderDetectLastRectangleFeature.bottomRight)
-                
-            }else {
-                if (rectOverlay != nil) {
-                    rectOverlay.path = nil;
-                }
+            if (self.context != nil && self.coreImageContext != nil) {
+                // 将捕获到的图片绘制进_coreImageContext
+                self.coreImageContext.draw(image, in: self.bounds, from: image.extent)
+                self.context.presentRenderbuffer(Int(GL_RENDERBUFFER))
+                self.glkView.setNeedsDisplay()
             }
         }
         
-        if (context != nil && coreImageContext != nil) {
-            // 将捕获到的图片绘制进_coreImageContext
-            coreImageContext.draw(image, in: bounds, from: image.extent)
-            context.presentRenderbuffer(Int(GL_RENDERBUFFER))
-            glkView.setNeedsDisplay()
-        }
     }
     
     //MARK: --- 拍照动作
@@ -281,7 +286,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
             if (self.enableBorderDetection) {
                 var enhancedImage: CIImage = CIImage(data: imageData!)!
                 // 判断边缘识别度阈值, 再对拍照后的进行边缘识别
-                let rectangleFeature =  self.biggestRectangleInRectangles(rectangles: (self.highAccuracyRectangleDetector!.features(in: enhancedImage)))
+                let rectangleFeature =  self.getBiggestRectangleFeature(img: enhancedImage)
                 
                 if (rectangleFeature != nil) {
                     enhancedImage = self.correctPerspectiveForImage(image: enhancedImage, rectangleFeature: rectangleFeature!)
@@ -318,32 +323,68 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
 extension MDSScanView{
     
     //MARK: --- 选取feagure rectangles中最大的矩形
-    func biggestRectangleInRectangles(rectangles: [CIFeature]) -> CIRectangleFeature? {
-        if rectangles.count == 0 { return nil }
+    
+    func getBiggestRectangleFeature(img:CIImage) -> CIRectangleFeature? {
         
-        var halfPerimiterValue: Float = 0
-        var biggestRectangle: CIRectangleFeature = rectangles.first as! CIRectangleFeature
+        // 用高精度边缘识别器 识别特征
+        let features: [CIFeature] = (self.highAccuracyRectangleDetector?.features(in: img))!
+        // 选取特征列表中最大的矩形
+        let biggestRectangle = biggestRectangleInRectangles(rectangles: features)
         
-        for rectangle in rectangles {
-            let rect: CIRectangleFeature = rectangle as! CIRectangleFeature
-            let p1 = rect.topLeft
-            let p2 = rect.topRight
-            let width = hypotf(Float(p1.x - p2.x), Float(p1.y - p2.y))
+        if biggestRectangle != nil {
+            //此处为矩阵过滤 小于1/4大小的
+            let p1 = biggestRectangle!.topLeft
+            let p2 = biggestRectangle!.topRight
+            let width1 = hypotf(Float(p1.x - p2.x), Float(p1.y - p2.y))
             
-            let p3 = rect.topLeft
-            let p4 = rect.bottomLeft
-            let height = hypotf(Float(p3.x - p4.x), Float(p3.y - p4.y))
+            let p3 = biggestRectangle!.topLeft
+            let p4 = biggestRectangle!.bottomLeft
+            let height1 = hypotf(Float(p3.x - p4.x), Float(p3.y - p4.y))
             
-            let currentHalfPerimiterValue = height + width
+            let size1 = 4*width1*height1
             
-            if (halfPerimiterValue < currentHalfPerimiterValue)
-            {
-                halfPerimiterValue = currentHalfPerimiterValue
-                biggestRectangle = rect
+            let ig:UIImage = UIImage.init(ciImage:img)
+            if (size1 < Float(ig.size.width*ig.size.height)) {
+                return nil
             }
         }
         
+        return biggestRectangle
+    }
+    
+    func biggestRectangleInRectangles(rectangles: [CIFeature]) -> CIRectangleFeature? {
+        if rectangles.count == 0 { return nil }
+        var biggestRectangle: CIRectangleFeature = rectangles.first as! CIRectangleFeature
+        
+        for rectangle in rectangles {
+            biggestRectangle = self.getBiggestRectWiht(rect1: biggestRectangle, rect2: rectangle as! CIRectangleFeature)!
+        }
+        
         return biggestRectangle;
+    }
+    
+    func getBiggestRectWiht(rect1:CIRectangleFeature,rect2:CIRectangleFeature) -> CIRectangleFeature? {
+        
+        let p1 = rect1.topLeft
+        let p2 = rect1.topRight
+        let width1 = hypotf(Float(p1.x - p2.x), Float(p1.y - p2.y))
+        
+        let p3 = rect1.topLeft
+        let p4 = rect1.bottomLeft
+        let height1 = hypotf(Float(p3.x - p4.x), Float(p3.y - p4.y))
+        
+        let p21 = rect2.topLeft
+        let p22 = rect2.topRight
+        let width2 = hypotf(Float(p21.x - p22.x), Float(p1.y - p22.y))
+        
+        let p23 = rect2.topLeft
+        let p24 = rect2.bottomLeft
+        let height2 = hypotf(Float(p23.x - p24.x), Float(p23.y - p24.y))
+        
+        if width1+height1 > width2+height2 {
+            return rect1
+        }
+        return rect2
     }
     
     //MARK: ---将任意四边形转换成长方形
@@ -359,20 +400,20 @@ extension MDSScanView{
     //MARK: --- 绘制边缘检测图层
     func drawBorderDetectRectWithImageRect(imageRect: CGRect, topLeft: CGPoint,  topRight:CGPoint, bottomLeft: CGPoint, bottomRight: CGPoint) {
         
-        if (rectOverlay == nil) {
-            rectOverlay = CAShapeLayer(layer: layer)
-            rectOverlay.fillRule = .evenOdd
-            rectOverlay.fillColor = UIColor(red: 73/255.0, green: 130/225.0, blue: 180/255.0, alpha: 0.4).cgColor
-            rectOverlay.strokeColor = UIColor.white.cgColor
-            rectOverlay.lineWidth = 5.0
+        if (self.rectOverlay == nil) {
+            self.rectOverlay = CAShapeLayer(layer: layer)
+            self.rectOverlay.fillRule = .evenOdd
+            self.rectOverlay.fillColor = UIColor(red: 73/255.0, green: 130/225.0, blue: 180/255.0, alpha: 0.4).cgColor
+            self.rectOverlay.strokeColor = UIColor.white.cgColor
+            self.rectOverlay.lineWidth = 5.0
         }
-        if (rectOverlay.superlayer == nil) {
-            layer.masksToBounds = true
-            layer.addSublayer(rectOverlay)
+        if (self.rectOverlay.superlayer == nil) {
+            self.layer.masksToBounds = true
+            self.layer.addSublayer(rectOverlay)
         }
         
         // 将图像空间的坐标系转换成uikit坐标系
-        let featureRect = transfromRealRectWithImageRect(imageRect: imageRect, topLeft: topLeft, topRight: topRight, bottomLeft: bottomLeft, bottomRight: bottomRight)
+        let featureRect = self.transfromRealRectWithImageRect(imageRect: imageRect, topLeft: topLeft, topRight: topRight, bottomLeft: bottomLeft, bottomRight: bottomRight)
         
         // 边缘识别路径
         let path = UIBezierPath()
@@ -385,7 +426,7 @@ extension MDSScanView{
         let rectPath  = UIBezierPath(rect: CGRect(x: -5, y: -5, width: frame.size.width + 10, height: frame.size.height + 10))
         rectPath.usesEvenOddFillRule = true
         rectPath.append(path)
-        rectOverlay.path = rectPath.cgPath
+        self.rectOverlay.path = rectPath.cgPath
     }
     //坐标系转换
     private func transfromRealRectWithImageRect(imageRect: CGRect, topLeft: CGPoint, topRight: CGPoint, bottomLeft:CGPoint, bottomRight: CGPoint) -> TransformCIFeatureRect {
