@@ -22,7 +22,7 @@ class MDSScanView: UIView,
     AVCapturePhotoCaptureDelegate,
 AVCaptureVideoDataOutputSampleBufferDelegate {
     /// 开启边缘检测
-    var enableBorderDetection: Bool = false
+    var enableBorderDetection: Bool = true
     private var coreImageContext: CIContext!
     private var renderBuffer: GLuint = GLuint()
     private var glkView: GLKView!
@@ -187,10 +187,11 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
             session.sessionPreset = .photo
             session.addInput(input)
             
+            let videoQueue = DispatchQueue(label: "VIDEO_QUEUE")
             let dataOutput =  AVCaptureVideoDataOutput()
             dataOutput.alwaysDiscardsLateVideoFrames = true
             dataOutput.videoSettings = [String(kCVPixelBufferPixelFormatTypeKey): kCVPixelFormatType_32BGRA]
-            dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global(qos: .default))
+            dataOutput.setSampleBufferDelegate(self, queue: videoQueue)
             session.addOutput(dataOutput)
             
             self.captureOutput =  AVCapturePhotoOutput()
@@ -287,7 +288,6 @@ AVCaptureVideoDataOutputSampleBufferDelegate {
                 var enhancedImage: CIImage = CIImage(data: imageData!)!
                 // 判断边缘识别度阈值, 再对拍照后的进行边缘识别
                 let rectangleFeature =  self.getBiggestRectangleFeature(img: enhancedImage)
-                
                 if (rectangleFeature != nil) {
                     enhancedImage = self.correctPerspectiveForImage(image: enhancedImage, rectangleFeature: rectangleFeature!)
                     // 获取拍照图片 --- 必须异步操作 否则内存不释放
