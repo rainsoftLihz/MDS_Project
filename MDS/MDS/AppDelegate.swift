@@ -31,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func gotoHome() {
-        window?.rootViewController = MDSGoToScanController()
-            //MDSTabBarController()
+        window?.rootViewController = MDSTabBarController()
+        //MDSGoToScanController()
     }
     
     

@@ -13,11 +13,11 @@ class MDSMinewController: MDSBaseController,MDSChoseImgsToolDelegate {
     var choseBtn:UIButton = UIView.createBtn(title: "选择图片", titleColor: .black, fontSize: 14)
     
     var imgV:UIImageView = {
-        let w:CGFloat = 350
-        let tempV:UIImageView = UIImageView.init(frame: CGRect.init(x: SCREEN_WIDTH/2-w/2, y: 150, width: w, height: w))
+        let w:CGFloat = 150
+        let tempV:UIImageView = UIImageView.init(frame: CGRect.zero)
         tempV.image = UIImage.init(named: "xkdj")
         tempV.backgroundColor = .yellow
-        tempV.contentMode = .scaleAspectFill
+        tempV.contentMode = .scaleAspectFit
         return tempV
     }()
     
@@ -25,10 +25,17 @@ class MDSMinewController: MDSBaseController,MDSChoseImgsToolDelegate {
         super.viewDidLoad()
         self.view.addSubViews([choseBtn,imgV])
         choseBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(100)
+            make.top.equalTo(0)
             make.centerX.equalToSuperview()
+            make.height.equalTo(100)
         }
         choseBtn.addTarget(self, action: #selector(choseImg), for: .touchUpInside)
+        self.imgV.snp.makeConstraints { (make) in
+            make.top.equalTo(choseBtn.snp_bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-50)
+            make.width.lessThanOrEqualTo(SCREEN_WIDTH)
+        }
         
     }
     

@@ -229,16 +229,19 @@ extension UIView{
     
     //MARK: - UIView转UIImage
     static func getImageFromView(theView: UIView,rect: CGRect) ->UIImage?{
-        UIGraphicsBeginImageContextWithOptions(theView.frame.size,false, UIScreen.main.scale);
-        let context:CGContext = UIGraphicsGetCurrentContext()!
-        context.saveGState();
-        
-        UIRectClip(rect);
-        theView.layer.render(in: context)
-        let theImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!;
+        UIGraphicsBeginImageContextWithOptions(theView.frame.size,false, 1.0);
+        theView.layer.render(in: UIGraphicsGetCurrentContext()!)
+       
+        let theImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let imageRef = theImage.cgImage
+        let subImageRef = imageRef!.cropping(to: rect)
+        let context = UIGraphicsGetCurrentContext()
+        context?.draw(subImageRef!, in: rect)
+        let clipImg = UIImage.init(cgImage: subImageRef!)
         UIGraphicsEndImageContext();
+        
         UIImageWriteToSavedPhotosAlbum(theImage, nil, nil, nil)
-        return theImage
+        return clipImg
     }
     
     //MARK: - UIView转UIImage

@@ -10,4 +10,6 @@
 #define MDS_bridge_h
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <MJRefresh/MJRefresh.h>
+#import "UIView+Img.h"
+#import "UIView+Frame.h"
 #endif /* MDS_bridge_h */

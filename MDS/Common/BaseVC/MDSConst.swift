@@ -59,7 +59,7 @@ public let kBloldFont:((CGFloat) -> UIFont) = { (s : CGFloat) -> UIFont in
     return UIFont.boldSystemFont(ofSize: s)
 }
 
-public let kImage:((NSString) -> UIImage) = { (s : NSString) -> UIImage in
-    return UIImage.init(named: s as String)!
+public let kImage:((String) -> UIImage) = { (s : String) -> UIImage in
+    return UIImage.init(named: s as String) ?? UIImage.init()
 }
 

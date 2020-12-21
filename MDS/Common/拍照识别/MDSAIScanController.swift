@@ -134,7 +134,7 @@ class MDSAIScanController: MDSBaseController, AVCapturePhotoCaptureDelegate {
                             var imgV:UIImageView?
                             if info!.label != 2 {
                                 let imgStr = info?.label == 0 ? "cuo":"dui"
-                                imgV = UIImageView.init(image: kImage(imgStr as NSString))
+                                imgV = UIImageView.init(image: kImage(imgStr))
                                 self.imgV.addSubview(imgV!)
                             }
                             if info!.mark!.count == 0{
