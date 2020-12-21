@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		40565B7089854AC319E3EBAA /* libPods-MDS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41362C0B7CD49EEA340EE2EE /* libPods-MDS.a */; };
-		53089D892588AB88001E751E /* MDSMyEditImgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53089D882588AB88001E751E /* MDSMyEditImgView.swift */; };
 		531613A62589A0C6001E14CF /* UIView+Img.m in Sources */ = {isa = PBXBuildFile; fileRef = 531613A52589A0C6001E14CF /* UIView+Img.m */; };
 		53384EAA256B4F7E00833FC2 /* MDSAIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53384EA9256B4F7E00833FC2 /* MDSAIModel.swift */; };
 		53384EAB256B4F7E00833FC2 /* MDSAIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53384EA9256B4F7E00833FC2 /* MDSAIModel.swift */; };
@@ -148,7 +147,6 @@
 
 /* Begin PBXFileReference section */
 		41362C0B7CD49EEA340EE2EE /* libPods-MDS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MDS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		53089D882588AB88001E751E /* MDSMyEditImgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSMyEditImgView.swift; sourceTree = "<group>"; };
 		531613A42589A0C6001E14CF /* UIView+Img.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Img.h"; sourceTree = "<group>"; };
 		531613A52589A0C6001E14CF /* UIView+Img.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Img.m"; sourceTree = "<group>"; };
 		53384EA9256B4F7E00833FC2 /* MDSAIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSAIModel.swift; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 				536A33412563790C006E4E0E /* MDSEditImgView.swift */,
 				536A33422563790C006E4E0E /* MDSEditImgController.swift */,
 				536A33432563790C006E4E0E /* MDSCutAreaView.swift */,
-				53089D882588AB88001E751E /* MDSMyEditImgView.swift */,
 				531613A42589A0C6001E14CF /* UIView+Img.h */,
 				531613A52589A0C6001E14CF /* UIView+Img.m */,
 				533997A0258AE7FC0006576D /* UIView+Frame.h */,
@@ -903,7 +900,6 @@
 				536A33BE2563790C006E4E0E /* MDSMinewController.swift in Sources */,
 				536A33A62563790C006E4E0E /* MDSHomeAPI.swift in Sources */,
 				536A33982563790C006E4E0E /* MDSChatModel.swift in Sources */,
-				53089D892588AB88001E751E /* MDSMyEditImgView.swift in Sources */,
 				536A33682563790C006E4E0E /* MDSHomeController.swift in Sources */,
 				536A336E2563790C006E4E0E /* MDSCyclicScrollView.swift in Sources */,
 				536A33962563790C006E4E0E /* MDSChatController.swift in Sources */,
